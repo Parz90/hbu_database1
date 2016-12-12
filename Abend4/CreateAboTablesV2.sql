@@ -1,6 +1,7 @@
 -- DB anwählen
 USE Abo;
 
+-- Schritt 1:
 -- Tabelle Anrede erstellen
 CREATE TABLE Anrede
 (
@@ -38,8 +39,13 @@ CREATE TABLE Mitglied
 	Vorname		varchar(50)		null,
 	Eintritt	date			null,
 	CONSTRAINT PK_Mitglied PRIMARY KEY (ID),
-	CONSTRAINT FK_Anrede FOREIGN KEY (AnredeID) REFERENCES Anrede(ID),
-	CONSTRAINT FK_Ort FOREIGN KEY (OrtID) REFERENCES ORT(ID),
-	CONSTRAINT FK_AboArt FOREIGN KEY (AboID) REFERENCES AboArt(ID)
 );
 
+
+-- Schritt 2:
+-- Create Contraints
+ALTER TABLE Mitglied
+	ADD
+	CONSTRAINT FK_Mitglied_Anrede FOREIGN KEY (AnredeID) REFERENCES Anrede(ID),
+	CONSTRAINT FK_Mitglied_Ort FOREIGN KEY (OrtID) REFERENCES ORT(ID),
+	CONSTRAINT FK_Mitglied_AboArt FOREIGN KEY (AboID) REFERENCES AboArt(ID)
