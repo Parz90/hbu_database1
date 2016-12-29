@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<SqlWorkbenchSqlProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="Abo">
+  <Items>
+    <LogicalFolder Name="Verbindungen" Type="2" Sorted="true">
+      <Items>
+        <ConnectionNode Name="(local)\SQLEXPRESS:PARZ\Parz">
+          <Created>2016-12-17T10:29:07.7287149+01:00</Created>
+          <Type>SQL</Type>
+          <Server>(local)\SQLEXPRESS</Server>
+          <UserName />
+          <Authentication>Windows-Authentifizierung</Authentication>
+          <InitialDB />
+          <LoginTimeout>15</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName />
+        </ConnectionNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="Abfragen" Type="0" Sorted="true">
+      <Items>
+        <FileNode Name="CreateAboTables.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\SQLEXPRESS:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\SQLEXPRESS</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>CreateAboTables.sql</FullPath>
+        </FileNode>
+        <FileNode Name="CreateAboTablesV2.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\SQLEXPRESS:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\SQLEXPRESS</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>CreateAboTablesV2.sql</FullPath>
+        </FileNode>
+        <FileNode Name="DeleteAboData.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\SQLEXPRESS:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\SQLEXPRESS</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>DeleteAboData.sql</FullPath>
+        </FileNode>
+        <FileNode Name="DropAboTables.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\SQLEXPRESS:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\SQLEXPRESS</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>DropAboTables.sql</FullPath>
+        </FileNode>
+        <FileNode Name="DropAboTablesV2.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\SQLEXPRESS:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\SQLEXPRESS</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>DropAboTablesV2.sql</FullPath>
+        </FileNode>
+        <FileNode Name="InsertAboData.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\SQLEXPRESS:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\SQLEXPRESS</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>InsertAboData.sql</FullPath>
+        </FileNode>
+        <FileNode Name="SQLQuery2.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\SQLEXPRESS:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\SQLEXPRESS</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>SQLQuery2.sql</FullPath>
+        </FileNode>
+        <FileNode Name="UpdateAboData.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\SQLEXPRESS:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>(local)\SQLEXPRESS</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>UpdateAboData.sql</FullPath>
+        </FileNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="Sonstiges" Type="3" Sorted="true">
+      <Items />
+    </LogicalFolder>
+  </Items>
+</SqlWorkbenchSqlProject>

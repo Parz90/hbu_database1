@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<SqlWorkbenchSqlProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="Abo">
+  <Items>
+    <LogicalFolder Name="Connections" Type="2" Sorted="true">
+      <Items>
+        <ConnectionNode Name="KETA22\SQLEXPRESS:KETA22\lm">
+          <Created>2016-12-15T22:07:15.3053017+01:00</Created>
+          <Type>SQL</Type>
+          <Server>KETA22\SQLEXPRESS</Server>
+          <UserName />
+          <Authentication>Windows Authentication</Authentication>
+          <InitialDB />
+          <LoginTimeout>15</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName />
+        </ConnectionNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="Queries" Type="0" Sorted="true">
+      <Items>
+        <FileNode Name="CreateAboTables.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:KETA22\SQLEXPRESS:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>KETA22\SQLEXPRESS</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>CreateAboTables.sql</FullPath>
+        </FileNode>
+        <FileNode Name="CreateAboTablesV2.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:KETA22\SQLEXPRESS:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>KETA22\SQLEXPRESS</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>CreateAboTablesV2.sql</FullPath>
+        </FileNode>
+        <FileNode Name="DropAboTables.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:KETA22\SQLEXPRESS:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>KETA22\SQLEXPRESS</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>DropAboTables.sql</FullPath>
+        </FileNode>
+        <FileNode Name="DropAboTablesV2.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:KETA22\SQLEXPRESS:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>KETA22\SQLEXPRESS</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>DropAboTablesV2.sql</FullPath>
+        </FileNode>
+        <FileNode Name="InsertAboData.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:KETA22\SQLEXPRESS:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>KETA22\SQLEXPRESS</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>InsertAboData.sql</FullPath>
+        </FileNode>
+      </Items>
+    </LogicalFolder>
+    <LogicalFolder Name="Miscellaneous" Type="3" Sorted="true">
+      <Items />
+    </LogicalFolder>
+  </Items>
+</SqlWorkbenchSqlProject>

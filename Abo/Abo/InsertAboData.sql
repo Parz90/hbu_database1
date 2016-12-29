@@ -32,7 +32,7 @@ INSERT INTO Mitglied (ID, AnredeID, OrtID, AboID, Nachname, Vorname, Eintritt)
 			   (66, 2, 2, 3, 'Keller', 'Georg' , convert(date, '30.11.1996', 104)),
 			   (77, 1, 4, 3, 'Müller', 'Karina' , convert(date, '30.08.2005', 104)),
 			   (88, 2, 5, 1, 'Groz', 'Thomas' , convert(date, '15.07.2005', 104)),
-			   (99, 1, 4, 2, 'Isabelle', 'Pozzi' , convert(date, '15.07.2005', 104));
+			   (99, 1, 4, 2, 'Pozzi', 'Isabelle', convert(date, '15.07.2005', 104));
 
 SELECT * FROM Mitglied;
 
@@ -47,3 +47,11 @@ INSERT INTO Mitglied (ID, AnredeID, OrtID, AboID, Nachname, Vorname, Eintritt)
 		VALUES (99, 1, 4, 2, 'Isabelle', 'Pozzi' , convert(date, '15.07.2005', 104));
 
 SELECT * FROM Mitglied;
+
+-- Test Query um Check Constraints zu testen
+
+INSERT INTO Ort (PLZ, Ort)
+		VALUES (10000, 'Zürich');
+
+INSERT INTO AboArt (Gebuehr)
+		VALUES (0.00);
