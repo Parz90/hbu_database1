@@ -23,37 +23,37 @@
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\SQLEXPRESS:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>(local)\SQLEXPRESS</AssociatedConnSrvName>
           <AssociatedConnUserName />
-          <FullPath>hrs_crea_database.sql</FullPath>
+          <FullPath>C:\Users\HP ENVY\Wichtige Daten\HFU\Datenbank1\HRS_Aufgabe\Abgabe\hrs_crea_database.sql</FullPath>
         </FileNode>
         <FileNode Name="hrs_crea_user.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\SQLEXPRESS:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>(local)\SQLEXPRESS</AssociatedConnSrvName>
           <AssociatedConnUserName />
-          <FullPath>hrs_crea_user.sql</FullPath>
+          <FullPath>C:\Users\HP ENVY\Wichtige Daten\HFU\Datenbank1\HRS_Aufgabe\Abgabe\hrs_crea_user.sql</FullPath>
         </FileNode>
         <FileNode Name="hrs_drop_database.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\SQLEXPRESS:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>(local)\SQLEXPRESS</AssociatedConnSrvName>
           <AssociatedConnUserName />
-          <FullPath>hrs_drop_database.sql</FullPath>
+          <FullPath>C:\Users\HP ENVY\Wichtige Daten\HFU\Datenbank1\HRS_Aufgabe\Abgabe\hrs_drop_database.sql</FullPath>
         </FileNode>
         <FileNode Name="hrs_drop_user.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\SQLEXPRESS:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>(local)\SQLEXPRESS</AssociatedConnSrvName>
           <AssociatedConnUserName />
-          <FullPath>hrs_drop_user.sql</FullPath>
+          <FullPath>C:\Users\HP ENVY\Wichtige Daten\HFU\Datenbank1\HRS_Aufgabe\Abgabe\hrs_drop_user.sql</FullPath>
         </FileNode>
         <FileNode Name="hrs_ins_data.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\SQLEXPRESS:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>(local)\SQLEXPRESS</AssociatedConnSrvName>
           <AssociatedConnUserName />
-          <FullPath>hrs_ins_data.sql</FullPath>
+          <FullPath>C:\Users\HP ENVY\Wichtige Daten\HFU\Datenbank1\HRS_Aufgabe\Abgabe\hrs_ins_data.sql</FullPath>
         </FileNode>
         <FileNode Name="Select.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:(local)\SQLEXPRESS:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>(local)\SQLEXPRESS</AssociatedConnSrvName>
           <AssociatedConnUserName />
-          <FullPath>Select.sql</FullPath>
+          <FullPath>C:\Users\HP ENVY\Wichtige Daten\HFU\Datenbank1\HRS_Aufgabe\Abgabe\Select.sql</FullPath>
         </FileNode>
       </Items>
     </LogicalFolder>
