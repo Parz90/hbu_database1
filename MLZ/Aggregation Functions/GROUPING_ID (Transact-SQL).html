@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<!-- saved from url=(0054)https://msdn.microsoft.com/en-us/library/bb510624.aspx -->
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="WT.seg_1" content="en-us"><link rel="canonical" href="https://msdn.microsoft.com/en-us/library/bb510624.aspx">
+    <title>GROUPING_ID (Transact-SQL)</title>
+
+
+
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/bb510624(d=default,l=en-us,v=sql.130).aspx">
+
+<meta name="NormalizedUrl" content="https://msdn.microsoft.com/en-us/library/bb510624(d=default,l=en-us,v=sql.130).aspx">
+
+<meta name="ms.normalizedurl" content="https://msdn.microsoft.com/en-us/library/bb510624(d=default,l=en-us,v=sql.130).aspx">
+
+<meta name="ms.prod" content="sql-non-specified">
+
+<meta name="ms.devlang" content="na">
+
+<meta name="ms.topic" content="language-reference">
+
+<meta name="AmbientContext" content="{&quot;layout.limit_max_width&quot;:true,&quot;AmbientContextId&quot;:&quot;B3372421-67DA-46BB-AAC1-DA970AA92CC7&quot;,&quot;display.use_large_font&quot;:false,&quot;insight.perf_timing&quot;:true,&quot;AmbientContextDownstream&quot;:{&quot;LogTrace&quot;:false},&quot;display.high_contrast&quot;:false,&quot;insight.use_wedcs_vnext&quot;:true}">
+
+<meta name="VotingContextUrl" content="https://msdn.microsoft.com/en-us/library/bb510624(d=default,l=en-us,v=sql.130).aspx">
+
+<meta name="MN" content="9DDD8834-2:27:01 PM">
+
+<meta name="Search.ShortId" content="bb510624">
+
+<meta name="ms.shortidmsdn" content="bb510624">
+
+<meta name="ms.locale" content="en-us">
+
+<meta name="ms.prodver" content="SQL.130">
+
+<meta name="ms.contentlang" content="EN">
+
+<meta name="ms.lang" content="EN">
+
+<meta name="ms.loc" content="US">
+
+<meta name="ms.sitever" content="2016.12.26.2">
+
+<meta name="ms.assetid" content="c1050658-b19f-42ee-9a05-ecd6a73b896c">
+
+<meta name="ms.auth" content="0">
+
+<meta name="ms.technology" content="database-engine">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+        
+
+
+
+
+
+
+
+
+
+    <script type="text/javascript" src="./GROUPING_ID (Transact-SQL)_files/ai.0.js.Download" async=""></script><script type="text/javascript" data-do-not-move="true">
+        //<![CDATA[
+        var AmbientContext = null;
+
+        (function(){
+            var root = (function(){return this;}).call(null);
+
+            var GetCookie = function(name){
+                var cookies = root.document.cookie ? root.document.cookie.split('; ') : [];
+                for (var i = 0; i < cookies.length; i++) {
+                    var pos = cookies[i].indexOf('=');
+                    if (name === root.decodeURIComponent(cookies[i].slice(0, pos)))
+                    {
+                        var cookie = cookies[i].slice(pos + 1).replace(/\+/g, ' ');
+                        cookie = root.decodeURIComponent(cookie);
+                        return cookie;
+                    }
+                }
+            };
+
+            var JsonDeserialize = function(content) {
+                return root.JSON && root.JSON.parse ? root.JSON.parse(content) : (new Function('return (' + content + ')'))();
+            };
+
+            try {
+                AmbientContext = GetCookie('AmbientContext');
+                AmbientContext = AmbientContext && JsonDeserialize(AmbientContext);
+            } catch(ex) {
+            } finally {
+                AmbientContext = AmbientContext || null;
+            }
+        })();
+        //]]>
+    </script>
+
+    <script type="text/javascript" src="./GROUPING_ID (Transact-SQL)_files/jquery-1.9.1.min.js.Download" data-do-not-move="true" data-provides="jQuery"></script>
+    
+<link rel="stylesheet" type="text/css" href="./GROUPING_ID (Transact-SQL)_files/Combined.css"><script class="mtps-injected">try {
+/**/
+(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { 
+	"image": "https://i-msdn.sec.s-msft.com", 
+	"js": "https://i2-msdn.sec.s-msft.com", 
+	"css": "https://i-msdn.sec.s-msft.com", 
+	"ttf": "https://i-msdn.sec.s-msft.com"
+});
+/**/
+} finally { MTPS._injectNextScript_0 && MTPS._injectNextScript_0(); }</script><script class="mtps-injected">try {
+//
+
+        window.appInsightsId = '5eb1b2eb-c47a-497a-a7ac-a1c230b2882f';
+        //
+} finally { MTPS._injectNextScript_1 && MTPS._injectNextScript_1(); }</script><script class="mtps-injected" src="./GROUPING_ID (Transact-SQL)_files/Combined.js.Download"></script><link href="./GROUPING_ID (Transact-SQL)_files/PrintView.css" rel="stylesheet" type="text/css" media="print"><meta name="ms.layout_limit_max_width" content="true"><meta name="ms.AmbientContextId" content="B3372421-67DA-46BB-AAC1-DA970AA92CC7"><meta name="ms.display_use_large_font" content="false"><meta name="ms.insight_perf_timing" content="true"><meta name="ms.AmbientContextDownstream" content="%7B%7D"><meta name="ms.display_high_contrast" content="false"><meta name="ms.insight_use_wedcs_vnext" content="true"><meta name="ms.perf.timing" content=",,0,0,0,12,872,877,888,1205,1205,1340,,,"><script type="text/javascript" src="./GROUPING_ID (Transact-SQL)_files/ms.js.Download"></script><script type="text/javascript" src="./GROUPING_ID (Transact-SQL)_files/jsll-3.2.0.js.Download"></script><script class="mtps-injected" src="./GROUPING_ID (Transact-SQL)_files/SearchBox.jss"></script><script class="mtps-injected" src="./GROUPING_ID (Transact-SQL)_files/JumpRedirect.js.Download"></script><script class="mtps-injected">try {
+MTPS = window.MTPS || {}; MTPS.LocalizedStrings = window.MTPS.LocalizedStrings || {}; MTPS.LocalizedStrings.ExpandButtonTooltip = 'Expand'; MTPS.LocalizedStrings.CollapseButtonTooltip = 'Collapse'; MTPS.LocalizedStrings.EnhancedExpandTooltip = 'Click to expand. Double-click to expand all.'; MTPS.LocalizedStrings.EnhancedCollapseTooltip = 'Click to collapse. Double-click to collapse all.'; MTPS.LocalizedStrings.ExpandAllButtonTooltip = 'Expand All'; MTPS.LocalizedStrings.CollapseAllButtonTooltip = 'Collapse All';
+} finally { MTPS._injectNextScript_5 && MTPS._injectNextScript_5(); }</script><script class="mtps-injected" src="./GROUPING_ID (Transact-SQL)_files/jquery.tmpl.min.js.Download"></script><script class="mtps-injected" src="./GROUPING_ID (Transact-SQL)_files/Combined.js(1).Download"></script><script src="./GROUPING_ID (Transact-SQL)_files/broker.js.Download"></script><script class="mtps-injected">try {
+$(document).ready(function() {
+        try {
+            var token = $("#globalRequestVerification input[name='__RequestVerificationToken']").clone();
+            $("#siteFeedbackForm").append(token);
+        } catch(err) {
+            
+        }
+    });
+} finally { MTPS._injectNextScript_8 && MTPS._injectNextScript_8(); }</script></head>
+<body class="library Chrome">
+    <div id="page">
+
+        
+
+        
+    
+
+    
+    <link type="text/css" rel="stylesheet">
+    
+        
+        
+    <input type="hidden" id="isHeaderBleeding" value="true">
+    <div id="ux-header" dir="ltr" class="ltr msdn" ms.pgarea="header" data-device-type="desktop">
+        
+
+      <header ms.pgarea="header">
+        <span id="singleCol"></span>
+        <span id="doubleCol"></span>
+        <span id="isMobile"></span>
+        <div>
+          <div class="row topRow" role="banner">
+            <div class="top">
+              <div class="left">
+                <a class="msdnLogoImg" href="https://msdn.microsoft.com/en-us" title="MSDN home" ms.cmpgrp="mslogo">
+                  <div class="clip70x15">
+                    <img alt="Microsoft Logo" id="msft-logo" class="msft-logo" src="./GROUPING_ID (Transact-SQL)_files/HeaderFooterSprite.png">
+                  </div>
+                </a>
+                <div class="GrayPipeDiv clip1x18">
+                  <img alt="Gray Pipe" class="GrayPipe" src="./GROUPING_ID (Transact-SQL)_files/HeaderFooterSprite.png">
+                </div>
+                  <a class="DevCenterFullNameNonMegaBlade" href="https://msdn.microsoft.com/en-us">Developer Network</a>
+                <a class="DevCenterFullName" href="https://msdn.microsoft.com/en-us">Developer Network</a>
+                <a class="DevCenterShortName" href="https://msdn.microsoft.com/en-us">Developer</a>
+              </div>
+              <div class="right" ms.cmpgrp="aux nav">
+                <div id="signIn" aria-label="Profile button">
+
+  <div class="profileImage"></div>
+
+
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=13&amp;ct=1484864821&amp;rver=6.7.6640.0&amp;wp=mcmbi&amp;wlcxt=msdn%24msdn%24msdn&amp;wreply=https%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fbb510624.aspx&amp;lc=1033&amp;id=254354&amp;mkt=en-us">Sign in</a></div>
+
+
+
+
+                <div class="auxNav">
+                  <div>
+                    <div data-fragmentname="Subscriptions" id="Fragment_Subscriptions" xmlns="http://www.w3.org/1999/xhtml">
+  <a href="https://my.visualstudio.com/?wt.mc_id=o~msft~msdn~nav~subscriber&amp;campaign=o~msft~msdn~nav~subscriber" id="Subscriptions_2153_1" xmlns="http://www.w3.org/1999/xhtml">
+    <p xmlns="">Subscriber portal</p>
+  </a>
+</div>
+                    <div data-fragmentname="GetTools" id="Fragment_GetTools" xmlns="http://www.w3.org/1999/xhtml">
+  <a href="https://www.visualstudio.com/free-developer-offers/" id="GetTools_2153_3" xmlns="http://www.w3.org/1999/xhtml">Get tools</a>
+</div>
+                  </div>
+                        <div>
+                            
+                        </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="row middleRow">
+            <div class="expandTop" style="display: none;">
+              <div class="left"></div>
+              <div class="right"></div>
+            </div>
+          </div>
+        </div>
+        <div id="buttomRowWrapper" class="bg_default">
+          <div class="row buttomRow bg_default">
+            <div class="bottom">
+              <div class="left" role="navigation" aria-label="header toc" ms.cmpgrp="main nav">
+                <a id="grip" class="menu-icon" href="javascript:void(0)" role="button" aria-label="navigation menu"></a>
+                
+                <div id="drawer">
+                  <div class="toc">
+                    
+        <nav>
+            <ul class="navL1" ms.cmpgrp="main nav">
+                        <li class="inactive toggle">
+                                <a href="javascript:void(0)" role="button" aria-expanded="false">Downloads</a>
+                                <ul class="navL2" style="display: none;">
+                                        <li class="inactive">
+
+                                                <a href="https://www.visualstudio.com/downloads/download-visual-studio-vs" role="link" title="Visual Studio">Visual Studio</a>
+                                        </li>
+                                        <li class="inactive">
+
+                                                <a href="https://msdn.microsoft.com/microsoft-sdks-msdn" role="link" title="SDKs">SDKs</a>
+                                        </li>
+                                        <li class="inactive toggle">
+
+                                                <a href="javascript:void(0)" title="Trial software" role="button" aria-expanded="false">Trial software</a>
+                                                <ul class="navL3" style="display: none;">
+                                                        <li class="inactive">
+                                                            <a href="https://msdn.microsoft.com/evalcenter" title="Free downloads" role="link">Free downloads</a>
+                                                        </li>
+                                                        <li class="inactive">
+                                                            <a href="https://msdn.microsoft.com/officeevaluationresources" title="Office resources" role="link">Office resources</a>
+                                                        </li>
+                                                        <li class="inactive">
+                                                            <a href="https://msdn.microsoft.com/sharepoint2013resources" title="SharePoint Server 2013 resources" role="link">SharePoint Server 2013 resources</a>
+                                                        </li>
+                                                        <li class="inactive">
+                                                            <a href="https://msdn.microsoft.com/sqlserver2014expressresources" title="SQL Server 2014 Express resources" role="link">SQL Server 2014 Express resources</a>
+                                                        </li>
+                                                        <li class="inactive">
+                                                            <a href="https://msdn.microsoft.com/windowsserver2012r2resources" title="Windows Server 2012 resources" role="link">Windows Server 2012 resources</a>
+                                                        </li>
+                                                </ul>
+                                        </li>
+                                </ul>
+                        </li>
+                        <li class="inactive toggle">
+                                <a href="javascript:void(0)" role="button" aria-expanded="false">Programs</a>
+                                <ul class="navL2" style="display: none;">
+                                        <li class="inactive toggle">
+
+                                                <a href="javascript:void(0)" title="Subscriptions" role="button" aria-expanded="false">Subscriptions</a>
+                                                <ul class="navL3" style="display: none;">
+                                                        <li class="inactive">
+                                                            <a href="https://msdn.microsoft.com/msdn-subscriptions-overview" title="Overview" role="link">Overview</a>
+                                                        </li>
+                                                        <li class="inactive">
+                                                            <a href="https://msdn.microsoft.com/msdn-subscriptions-administration" title="Administrators" role="link">Administrators</a>
+                                                        </li>
+                                                </ul>
+                                        </li>
+                                        <li class="inactive toggle">
+
+                                                <a href="javascript:void(0)" title="Students" role="button" aria-expanded="false">Students</a>
+                                                <ul class="navL3" style="display: none;">
+                                                        <li class="inactive">
+                                                            <a href="https://msdn.microsoft.com/imagine/imagine-home" title="Microsoft Imagine" role="link">Microsoft Imagine</a>
+                                                        </li>
+                                                        <li class="inactive">
+                                                            <a href="https://msdn.microsoft.com/microsoftstudentpartners" title="Microsoft Student Partners" role="link">Microsoft Student Partners</a>
+                                                        </li>
+                                                </ul>
+                                        </li>
+                                        <li class="inactive">
+
+                                                <a href="https://msdn.microsoft.com/applicationbuilder" role="link" title="ISV">ISV</a>
+                                        </li>
+                                        <li class="inactive">
+
+                                                <a href="https://www.microsoft.com/bizspark" role="link" title="Startups">Startups</a>
+                                        </li>
+                                        <li class="inactive">
+
+                                                <a href="https://events.microsoft.com/" role="link" title="Events">Events</a>
+                                        </li>
+                                </ul>
+                        </li>
+                        <li class="inactive toggle">
+                                <a href="javascript:void(0)" role="button" aria-expanded="false">Community</a>
+                                <ul class="navL2" style="display: none;">
+                                        <li class="inactive">
+
+                                                <a href="https://msdn.microsoft.com/magazine/dd767791" role="link" title="Magazine">Magazine</a>
+                                        </li>
+                                        <li class="inactive">
+
+                                                <a href="https://social.msdn.microsoft.com/forums/" role="link" title="Forums">Forums</a>
+                                        </li>
+                                        <li class="inactive">
+
+                                                <a href="https://blogs.msdn.microsoft.com/" role="link" title="Blogs">Blogs</a>
+                                        </li>
+                                        <li class="inactive">
+
+                                                <a href="http://channel9.msdn.com/" role="link" title="Channel 9">Channel 9</a>
+                                        </li>
+                                </ul>
+                        </li>
+                        <li class="inactive current toggle">
+                                <a href="javascript:void(0)" role="button" aria-expanded="false">Documentation</a>
+                                <ul class="navL2" style="display: none;">
+                                        <li class="inactive current">
+
+                                                <a href="https://msdn.microsoft.com/library" role="link" title="APIs and reference">APIs and reference</a>
+                                        </li>
+                                        <li class="inactive">
+
+                                                <a href="https://msdn.microsoft.com/developer-centers-msdn" role="link" title="Dev centers">Dev centers</a>
+                                        </li>
+                                        <li class="inactive">
+
+                                                <a href="https://code.msdn.microsoft.com/" role="link" title="Samples">Samples</a>
+                                        </li>
+                                        <li class="inactive">
+
+                                                <a href="https://msdn.microsoft.com/retiredcontent" role="link" title="Retired content">Retired content</a>
+                                        </li>
+                                </ul>
+                        </li>
+            </ul>
+        </nav>
+
+                  </div>
+                </div>
+              </div>
+              <div class="right" ms.title="search" role="search">
+                <div data-fragmentname="SearchBox" id="Fragment_SearchBox" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="SearchBox">
+    <form id="HeaderSearchForm" name="HeaderSearchForm" method="get">
+      <button id="FakeHeaderSearchButton" value="Search" type="submit" class="header-search-button" role="button" aria-label="search finder" ms.interactiontype="2" ms.title="search" ms.pgarea="header" ms.searchtype="icon">
+        <div id="search-finder-div" class="clip16x20">
+          <img alt="search finder" id="search-finder" class="search-finder" src="./GROUPING_ID (Transact-SQL)_files/HeaderFooterSprite.png">
+        </div>
+      </button>
+      <button id="HeaderSearchButton" style="display:none" data-searchtype="icon" data-pgarea="header" title="Search MSDN" ms.interactiontype="2" ms.title="search" ms.pgarea="header" ms.searchtype="icon"></button>
+      <div id="searchSplitter"></div>
+      <div id="searchCloseIconDiv" class="clip16x20" tabindex="0">
+        <img alt="search clear" id="searchCloseIcon" class="search-clear-x" src="./GROUPING_ID (Transact-SQL)_files/HeaderFooterSprite.png">
+      </div>
+      <div id="searchTextContainer" style="width: 0px; display: none;">
+        <input id="HeaderSearchTextBox" name="query" type="text" aria-label="Search Input Box" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" autocomplete="off" data-searchtype="searchbox" role="combobox" aria-autocomplete="both" aria-owns="MSDNSearchAutoCompleteList" aria-live="polite" placeholder="" data-pgarea="header" ms.interactiontype="2" ms.title="search" ms.pgarea="header" ms.searchtype="enter-key">
+      <div id="SearchFlyoutContainer" style="display: none; text-align: left; border: 1px solid buttonshadow; position: absolute; z-index: 1000; padding: 2px; background-color: rgb(255, 255, 255); color: rgb(255, 255, 255); font-family: Arial; font-size: 16px;"><div id="SuggestionContainer"><ul data-pgarea="header" data-searchtype="search dropdown" id="MSDNSearchAutoCompleteList" role="listbox" aria-controls="HeaderSearchTextBox" ms.interactiontype="2" ms.title="search" ms.pgarea="header" ms.searchtype="suggested keyword" style="list-style: none; padding: 4px 2px 0px 1px; cursor: pointer; margin: 1px; white-space: nowrap;"></ul></div></div><p role="alert" style="height: 1px;overflow-y: hidden;"></p></div>
+    </form>
+    
+    
+  </div>
+</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </header>
+
+    <div id="overlayMaskHeader"></div></div>
+
+    
+    
+    
+    <div id="jumpInfo" style="display: none">We’re sorry. The content you requested has been removed. You’ll be auto redirected in 1 second.</div>
+
+
+
+
+
+<link type="text/css" rel="stylesheet">
+<link type="text/css" rel="stylesheet">
+
+
+    <div id="breadcrumbs" ms.pgarea="body" ms.cmpgrp="breadcrumbs">
+        <div id="breadcrumbDesktop" class="breadCrumb">
+                        <span class="breadcrumbEllipsis"><a href="https://msdn.microsoft.com/en-us/library/dn198336.aspx" title="Microsoft SQL Server Language Reference"></a></span>
+                        <span><a href="https://msdn.microsoft.com/en-us/library/bb510741.aspx" title="Transact-SQL Reference (Database Engine)"><span>Transact-SQL Reference (Database Engine)</span></a></span>
+                        <span><a href="https://msdn.microsoft.com/en-us/library/ms174318.aspx" title="Built-in Functions (Transact-SQL)"><span>Built-in Functions (Transact-SQL)</span></a></span>
+                        <span class="breadcrumbDropSmall">
+                            <a id="breadcrumbDropDownButton" href="https://msdn.microsoft.com/en-us/library/bb510624.aspx#" targethref="https://msdn.microsoft.com/en-us/library/ms174318.aspx" title="Aggregate Functions (Transact-SQL)" role="button" aria-expanded="false"><span>Aggregate Functions (Transact-SQL)</span></a>
+                        </span>
+        </div>
+        <div id="breadcrumbDropDownMenu" style="display: none;"></div>
+
+        <div id="breadcrumbTablet" class="breadCrumb">
+                        <span class="breadcrumbEllipsis"><a href="https://msdn.microsoft.com/en-us/library/ms174318.aspx" title="Built-in Functions (Transact-SQL)"></a></span>
+                    <span><a href="https://msdn.microsoft.com/en-us/library/ms173454.aspx" title="Aggregate Functions (Transact-SQL)"><span>Aggregate Functions (Transact-SQL)</span></a></span>
+                <span class="breadcrumbDropSmall"><a id="tocDropDownButton" href="https://msdn.microsoft.com/en-us/library/bb510624.aspx#" title="GROUPING_ID (Transact-SQL)" role="button" aria-expanded="false"><span>GROUPING_ID (Transact-SQL)</span></a></span>
+        <div id="navigationButtons">
+            <a id="isd_print" href="https://msdn.microsoft.com/en-us/library/bb510624(d=printer).aspx" rel="nofollow"><ins class="print"></ins>Print </a>
+            <a id="isd_printABook" href="https://msdn.microsoft.com/en-us/library/export/help/?returnurl=%2fen-us%2flibrary%2fbb510624.aspx">
+                <ins class="export"></ins>Export (<span class="count">0</span>)
+            </a>
+        </div></div>
+        <div id="tocDropDownMenu" style="display: none;"></div>
+        <div id="breadcrumbMobile" class="breadCrumb">
+                <span class="breadcrumbEllipsis"><a href="https://msdn.microsoft.com/en-us/library/ms173454.aspx" title="Aggregate Functions (Transact-SQL)"></a></span>
+            <span class="breadcrumbDropSmall"><a id="tocPopupButton" href="https://msdn.microsoft.com/en-us/library/bb510624.aspx#" title="GROUPING_ID (Transact-SQL)" role="button" aria-expanded="false"><span>GROUPING_ID (Transact-SQL)</span></a></span>
+        <div id="navigationButtons">
+            <a id="isd_print" href="https://msdn.microsoft.com/en-us/library/bb510624(d=printer).aspx" rel="nofollow"><ins class="print"></ins>Print </a>
+            <a id="isd_printABook" href="https://msdn.microsoft.com/en-us/library/export/help/?returnurl=%2fen-us%2flibrary%2fbb510624.aspx">
+                <ins class="export"></ins>Export (<span class="count">0</span>)
+            </a>
+        </div></div>
+    </div>
+    <div id="tocPopupMenu" style="display: none;">
+        <div id="tocPopMenuClose" class="tocCloseLarge" role="button" aria-label="Close Popup Menu" tabindex="0"></div>
+        <div id="tocTitle">GROUPING_ID (Transact-SQL)</div>        
+    </div>
+
+    
+
+
+        <div id="body" ms.pgarea="body" class="">
+            <span id="tabletView_large"></span>
+            <span id="tabletView_small"></span>
+            <span id="mobileView"></span>
+            
+
+
+
+
+
+
+
+
+
+    <div id="leftNav" ms.cmpgrp="left toc" role="navigation" aria-label="left toc" style="height: auto;">
+
+    
+
+
+<div id="tocnav" class="ArchiveV2">
+    <div class="tocunselected">
+        <div id="tocExpandArea" style="display: block;">
+            <span class="toc_empty"></span>
+            <span id="tocExpandButton"><a href="javascript:void(0)" aria-label="expand sibling toc" role="button"></a></span>
+        </div>
+        <div id="tocExpand"><div class="toclevel " data-toclevel="1">
+<span class="toc_empty"></span><a href="https://msdn.microsoft.com/en-us/library/ms177677.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="AVG (Transact-SQL)">AVG (Transact-SQL)</a>                </div><div class="toclevel " data-toclevel="1">
+<span class="toc_empty"></span><a href="https://msdn.microsoft.com/en-us/library/ms188920.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="CHECKSUM_AGG (Transact-SQL)">CHECKSUM_AGG (Transact-SQL)</a>                </div></div>
+    <div class="toclevel " data-toclevel="1">
+<span class="toc_empty"></span><a href="https://msdn.microsoft.com/en-us/library/ms175997.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="COUNT (Transact-SQL)">COUNT (Transact-SQL)</a>                </div><div class="toclevel " data-toclevel="1">
+<span class="toc_empty"></span><a href="https://msdn.microsoft.com/en-us/library/ms190317.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="COUNT_BIG (Transact-SQL)">COUNT_BIG (Transact-SQL)</a>                </div><div class="toclevel " data-toclevel="1">
+<span class="toc_empty"></span><a href="https://msdn.microsoft.com/en-us/library/ms178544.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="GROUPING (Transact-SQL)">GROUPING (Transact-SQL)</a>                </div></div>
+    <div class="tocselected"><div class="toclevel current" data-toclevel="1">
+<span class="toc_empty"></span><a href="https://msdn.microsoft.com/en-us/library/bb510624.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="GROUPING_ID (Transact-SQL)">GROUPING_ID (Transact-SQL)</a>                </div><div class="tocPadding"></div></div>
+    <div class="tocunselected">
+                
+                
+                
+                
+                
+                
+                <div class="toclevel " data-toclevel="1">
+<span class="toc_empty"></span><a href="https://msdn.microsoft.com/en-us/library/ms187751.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="MAX (Transact-SQL)">MAX (Transact-SQL)</a>                </div>
+                <div class="toclevel " data-toclevel="1">
+<span class="toc_empty"></span><a href="https://msdn.microsoft.com/en-us/library/ms179916.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="MIN (Transact-SQL)">MIN (Transact-SQL)</a>                </div>
+                <div class="toclevel " data-toclevel="1">
+<span class="toc_empty"></span><a href="https://msdn.microsoft.com/en-us/library/ms190474.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="STDEV (Transact-SQL)">STDEV (Transact-SQL)</a>                </div>
+                <div class="toclevel " data-toclevel="1">
+<span class="toc_empty"></span><a href="https://msdn.microsoft.com/en-us/library/ms176080.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="STDEVP (Transact-SQL)">STDEVP (Transact-SQL)</a>                </div>
+                <div class="toclevel " data-toclevel="1">
+<span class="toc_empty"></span><a href="https://msdn.microsoft.com/en-us/library/ms187810.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="SUM (Transact-SQL)">SUM (Transact-SQL)</a>                </div>
+                <div class="toclevel " data-toclevel="1">
+<span class="toc_empty"></span><a href="https://msdn.microsoft.com/en-us/library/ms186290.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="VAR (Transact-SQL)">VAR (Transact-SQL)</a>                </div>
+                <div class="toclevel " data-toclevel="1">
+<span class="toc_empty"></span><a href="https://msdn.microsoft.com/en-us/library/ms188735.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="VARP (Transact-SQL)">VARP (Transact-SQL)</a>                </div>
+    </div>
+    <a id="tocMenuToggler" href="javascript:void(0)" role="button">
+        <span id="tocMenuTogglerIcon" class="tocMenuCollapse" role="button" aria-expanded="true" aria-label="Table of contents menu"></span>
+        <div id="tocMenuTogglerLabel">TOC</div>
+    </a>
+</div>            <div style="display:none">
+                <div id="CollapseLocalizeString">Collapse the table of content</div>
+                <div id="ExpandLocalizeString">Expand the table of content</div>
+            </div>
+        <div>
+            <a id="isd_archiveControlResponsive" style="display:none;" href="javascript:void(0)" role="button" aria-label="Hide Archived Versions" data-include-archive="Show Archived Versions" data-exclude-archive="Hide Archived Versions">
+            </a>
+            <div id="isd_archiveInstrument" style="display:none">This documentation is archived and is not being maintained.</div>
+        </div>
+    </div>
+     <div id="content" class="content" ms.cmpgrp="content body" role="main">
+
+
+
+
+
+
+
+
+    <div id="archiveDisclaimerText" style="display:none">This documentation is archived and is not being maintained.</div>
+
+
+
+<div xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="topic">
+    <h1 class="title">GROUPING_ID (Transact-SQL)</h1>
+    
+    <div class="lw_vs">
+      <div id="versionclick">
+        <div>
+          <div>
+            <a id="vsLink" href="javascript:void(0)" role="button" aria-label="Other Versions" aria-expanded="false">
+                        Other Versions
+                    </a>
+          </div>
+          <div class="cl_vs_arrow clip10x10">
+            <img class="cl_lw_vs_arrow" id="vsArrow" alt="" src="./GROUPING_ID (Transact-SQL)_files/ImageSprite.png">
+          </div>
+        </div>
+        <ul id="vsPanel">
+          <li class="">
+            <a href="https://msdn.microsoft.com/en-us/library/bb510624(v=sql.110).aspx">SQL Server 2012</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div style="clear:both;"></div>
+    <div id="mainSection">
+      <div id="mainBody">&nbsp;<p><token><strong>THIS TOPIC APPLIES TO:</strong><span><img id="a45b6379-ac63-48d7-ab97-33b3563b36ee" alt="yes" src="./GROUPING_ID (Transact-SQL)_files/IC840447.jpeg" title="yes" xmlns=""></span>SQL Server (starting with 2008)<span><img id="a45b6379-ac63-48d7-ab97-33b3563b36ee" alt="yes" src="./GROUPING_ID (Transact-SQL)_files/IC840447.jpeg" title="yes" xmlns=""></span>Azure SQL Database<span><img id="ed423705-b87b-4bee-8f6f-1b9705944575" alt="no" src="./GROUPING_ID (Transact-SQL)_files/IC840446.jpeg" title="no" xmlns=""></span>Azure SQL Data Warehouse <span><img id="ed423705-b87b-4bee-8f6f-1b9705944575" alt="no" src="./GROUPING_ID (Transact-SQL)_files/IC840446.jpeg" title="no" xmlns=""></span>Parallel Data Warehouse </token></p><p>Is a function that computes the level of grouping. GROUPING_ID can be used only in the SELECT &lt;select&gt; list, HAVING, or ORDER BY clauses when GROUP BY is specified.</p><p><span><img id="05b1d166-d807-482c-891f-30b3b6b58046" alt="Topic link icon" src="./GROUPING_ID (Transact-SQL)_files/IC128933.jpeg" title="Topic link icon" xmlns=""></span>&nbsp;<a href="https://msdn.microsoft.com/en-us/library/ms177563.aspx">Transact-SQL Syntax Conventions</a></p><div><h2 class="LW_CollapsibleArea_TitleDiv"><div><a class="LW_CollapsibleArea_TitleAhref" title="" role="heading"><span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span><span class="LW_CollapsibleArea_Title">Syntax</span></a><div id="Anchor_0" class="LW_CollapsibleArea_Anchor_Div active"><a href="https://msdn.microsoft.com/en-us/library/bb510624.aspx#Anchor_0" class="LW_CollapsibleArea_Anchor_Img" title="Right-click to copy and share the link for this section"></a></div><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr"></div></div></h2><div class="sectionblock"><a id="Syntax"></a></div></div>
+<div id="code-snippet-1" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode(&#39;CodeSnippetContainerCode_bafd5e82-91dc-4700-86ed-1f8dec5c2627&#39;);" ms.cmptyp="CodeSnippet">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_bafd5e82-91dc-4700-86ed-1f8dec5c2627" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>  
+GROUPING_ID ( &lt;column_expression&gt;[ ,...n ] )  
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+<div><h2 class="LW_CollapsibleArea_TitleDiv"><div><a class="LW_CollapsibleArea_TitleAhref" title="" role="heading"><span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span><span class="LW_CollapsibleArea_Title">Arguments</span></a><div id="Anchor_1" class="LW_CollapsibleArea_Anchor_Div"><a href="https://msdn.microsoft.com/en-us/library/bb510624.aspx#Anchor_1" class="LW_CollapsibleArea_Anchor_Img" title="Right-click to copy and share the link for this section"></a></div><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr"></div></div></h2><div class="sectionblock"><a id="Arguments"></a></div></div><p>&lt;column_expression&gt;<br>
+Is a <em>column_expression</em> in a <a href="https://msdn.microsoft.com/en-us/library/ms177673.aspx">GROUP BY</a> clause.</p><div><h2 class="LW_CollapsibleArea_TitleDiv"><div><a class="LW_CollapsibleArea_TitleAhref" title="" role="heading"><span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span><span class="LW_CollapsibleArea_Title">Return Type</span></a><div id="Anchor_2" class="LW_CollapsibleArea_Anchor_Div"><a href="https://msdn.microsoft.com/en-us/library/bb510624.aspx#Anchor_2" class="LW_CollapsibleArea_Anchor_Img" title="Right-click to copy and share the link for this section"></a></div><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr"></div></div></h2><div class="sectionblock"><a id="Return-Type"></a></div></div><p><strong>int</strong></p><div><h2 class="LW_CollapsibleArea_TitleDiv"><div><a class="LW_CollapsibleArea_TitleAhref" title="" role="heading"><span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span><span class="LW_CollapsibleArea_Title">Remarks</span></a><div id="Anchor_3" class="LW_CollapsibleArea_Anchor_Div"><a href="https://msdn.microsoft.com/en-us/library/bb510624.aspx#Anchor_3" class="LW_CollapsibleArea_Anchor_Img" title="Right-click to copy and share the link for this section"></a></div><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr"></div></div></h2><div class="sectionblock"><a id="Remarks"></a></div></div><p>The GROUPING_ID &lt;column_expression&gt; must exactly match the expression in the GROUP BY list. For example, if you are grouping by DATEPART (yyyy, &lt;<em>column name</em>&gt;), use GROUPING_ID (DATEPART (yyyy, &lt;<em>column name</em>&gt;)); or if you are grouping by &lt;<em>column name</em>&gt;, use GROUPING_ID (&lt;<em>column name</em>&gt;).</p><div><h2 class="LW_CollapsibleArea_TitleDiv"><div><a class="LW_CollapsibleArea_TitleAhref" title="" role="heading"><span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span><span class="LW_CollapsibleArea_Title">Comparing GROUPING_ID () to GROUPING ()</span></a><div id="Anchor_4" class="LW_CollapsibleArea_Anchor_Div"><a href="https://msdn.microsoft.com/en-us/library/bb510624.aspx#Anchor_4" class="LW_CollapsibleArea_Anchor_Img" title="Right-click to copy and share the link for this section"></a></div><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr"></div></div></h2><div class="sectionblock"><a id="Comparing-GROUPING_ID-to-GROUPING"></a></div></div><p>GROUPING_ID (&lt;column_expression&gt; [ <strong>,</strong>...<em>n</em> ]) inputs the equivalent of the GROUPING (&lt;column_expression&gt;) return for each column in its column list in each output row as a string of ones and zeros. GROUPING_ID interprets that string as a base-2 number and returns the equivalent integer. For example consider the following statement: <code>SELECT a, b, c, SUM(d),``GROUPING_ID(a,b,c)``FROM T GROUP BY &lt;group by list&gt;</code>. The following table shows the GROUPING_ID () input and output values.</p><div class="contentTableWrapper"><table responsive="true" summary="table"><thead><tr responsive="true"><th scope="col">Columns aggregated</th><th scope="col">GROUPING_ID (a, b, c) input = GROUPING(a) + GROUPING(b) + GROUPING(c)</th><th scope="col">GROUPING_ID () output</th></tr></thead><tbody><tr><td data-th="Columns aggregated"><code>a</code></td><td data-th="GROUPING_ID (a, b, c) input = GROUPING(a) + GROUPING(b) + GROUPING(c)"><code>100</code></td><td data-th="GROUPING_ID () output"><code>4</code></td></tr><tr><td data-th="Columns aggregated"><code>b</code></td><td data-th="GROUPING_ID (a, b, c) input = GROUPING(a) + GROUPING(b) + GROUPING(c)"><code>010</code></td><td data-th="GROUPING_ID () output"><code>2</code></td></tr><tr><td data-th="Columns aggregated"><code>c</code></td><td data-th="GROUPING_ID (a, b, c) input = GROUPING(a) + GROUPING(b) + GROUPING(c)"><code>001</code></td><td data-th="GROUPING_ID () output"><code>1</code></td></tr><tr><td data-th="Columns aggregated"><code>ab</code></td><td data-th="GROUPING_ID (a, b, c) input = GROUPING(a) + GROUPING(b) + GROUPING(c)"><code>110</code></td><td data-th="GROUPING_ID () output"><code>6</code></td></tr><tr><td data-th="Columns aggregated"><code>ac</code></td><td data-th="GROUPING_ID (a, b, c) input = GROUPING(a) + GROUPING(b) + GROUPING(c)"><code>101</code></td><td data-th="GROUPING_ID () output"><code>5</code></td></tr><tr><td data-th="Columns aggregated"><code>bc</code></td><td data-th="GROUPING_ID (a, b, c) input = GROUPING(a) + GROUPING(b) + GROUPING(c)"><code>011</code></td><td data-th="GROUPING_ID () output"><code>3</code></td></tr><tr><td data-th="Columns aggregated"><code>abc</code></td><td data-th="GROUPING_ID (a, b, c) input = GROUPING(a) + GROUPING(b) + GROUPING(c)"><code>111</code></td><td data-th="GROUPING_ID () output"><code>7</code></td></tr></tbody></table></div><div><h2 class="LW_CollapsibleArea_TitleDiv"><div><a class="LW_CollapsibleArea_TitleAhref" title="" role="heading"><span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span><span class="LW_CollapsibleArea_Title">Technical Definition of GROUPING_ID ()</span></a><div id="Anchor_5" class="LW_CollapsibleArea_Anchor_Div"><a href="https://msdn.microsoft.com/en-us/library/bb510624.aspx#Anchor_5" class="LW_CollapsibleArea_Anchor_Img" title="Right-click to copy and share the link for this section"></a></div><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr"></div></div></h2><div class="sectionblock"><a id="Technical-Definition-of-GROUPING_ID"></a></div></div><p>Each GROUPING_ID argument must be an element of the GROUP BY list. GROUPING_ID () returns an <strong>integer</strong> bitmap whose lowest N bits may be lit. A lit <strong>bit</strong> indicates the corresponding argument is not a grouping column for the given output row. The lowest-order <strong>bit</strong> corresponds to argument N, and the N-1<sup>th</sup> lowest-order <strong>bit</strong> corresponds to argument 1.</p><div><h2 class="LW_CollapsibleArea_TitleDiv"><div><a class="LW_CollapsibleArea_TitleAhref" title="" role="heading"><span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span><span class="LW_CollapsibleArea_Title">GROUPING_ID () Equivalents</span></a><div id="Anchor_6" class="LW_CollapsibleArea_Anchor_Div"><a href="https://msdn.microsoft.com/en-us/library/bb510624.aspx#Anchor_6" class="LW_CollapsibleArea_Anchor_Img" title="Right-click to copy and share the link for this section"></a></div><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr"></div></div></h2><div class="sectionblock"><a id="GROUPING_ID-Equivalents"></a></div></div><p>For a single grouping query, GROUPING (&lt;column_expression&gt;) is equivalent to GROUPING_ID (&lt;column_expression&gt;), and both return 0.</p><p>For example, the following statements are equivalent:</p><p>Statement A:</p>
+<div id="code-snippet-2" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode(&#39;CodeSnippetContainerCode_88d3dee6-cfd9-40d4-bc84-0824eee6887d&#39;);" ms.cmptyp="CodeSnippet">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_88d3dee6-cfd9-40d4-bc84-0824eee6887d" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>SELECT GROUPING_ID(A,B)  
+FROM T   
+GROUP BY CUBE(A,B)   
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+<p>Statement B:</p>
+<div id="code-snippet-3" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode(&#39;CodeSnippetContainerCode_6811c43c-d9a0-48af-88c8-e495a71639b5&#39;);" ms.cmptyp="CodeSnippet">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_6811c43c-d9a0-48af-88c8-e495a71639b5" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>SELECT 3 FROM T GROUP BY ()  
+UNION ALL  
+SELECT 1 FROM T GROUP BY A  
+UNION ALL  
+SELECT 2 FROM T GROUP BY B  
+UNION ALL  
+SELECT 0 FROM T GROUP BY A,B  
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+<div><h2 class="LW_CollapsibleArea_TitleDiv"><div><a class="LW_CollapsibleArea_TitleAhref" title="" role="heading"><span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span><span class="LW_CollapsibleArea_Title">Examples</span></a><div id="Anchor_7" class="LW_CollapsibleArea_Anchor_Div"><a href="https://msdn.microsoft.com/en-us/library/bb510624.aspx#Anchor_7" class="LW_CollapsibleArea_Anchor_Img" title="Right-click to copy and share the link for this section"></a></div><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr"></div></div></h2><div class="sectionblock"><a id="Examples"></a></div></div><h3 class="subHeading"><a id="A-Using-GROUPING_ID-to-identify-grouping-levels"></a>A. Using GROUPING_ID to identify grouping levels</h3><p>The following example returns the count of employees by <code>Name</code> and <code>Title</code>, <code>Name,</code> and company total in the AdventureWorks2012 database. <code>GROUPING_ID()</code> is used to create a value for each row in the <code>Title</code> column that identifies its level of aggregation.</p>
+<div id="code-snippet-4" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode(&#39;CodeSnippetContainerCode_14f359ff-cbae-4bee-8e03-62e42881eb71&#39;);" ms.cmptyp="CodeSnippet">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_14f359ff-cbae-4bee-8e03-62e42881eb71" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>SELECT D.Name  
+    ,CASE   
+    WHEN GROUPING_ID(D.Name, E.JobTitle) = 0 THEN E.JobTitle  
+    WHEN GROUPING_ID(D.Name, E.JobTitle) = 1 THEN N'Total: ' + D.Name   
+    WHEN GROUPING_ID(D.Name, E.JobTitle) = 3 THEN N'Company Total:'  
+        ELSE N'Unknown'  
+    END AS N'Job Title'  
+    ,COUNT(E.BusinessEntityID) AS N'Employee Count'  
+FROM HumanResources.Employee E  
+    INNER JOIN HumanResources.EmployeeDepartmentHistory DH  
+        ON E.BusinessEntityID = DH.BusinessEntityID  
+    INNER JOIN HumanResources.Department D  
+        ON D.DepartmentID = DH.DepartmentID       
+WHERE DH.EndDate IS NULL  
+    AND D.DepartmentID IN (12,14)  
+GROUP BY ROLLUP(D.Name, E.JobTitle);  
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+<h3 class="subHeading"><a id="B-Using-GROUPING_ID-to-filter-a-result-set"></a>B. Using GROUPING_ID to filter a result set</h3><h4 class="subHeading"><a id="Simple-Example"></a>Simple Example</h4><p>In the following code, to return only the rows that have a count of employees by title, remove the comment characters from <code>HAVING GROUPING_ID(D.Name, E.JobTitle); = 0</code> in the AdventureWorks2012 database. To return only rows with a count of employees by department, remove the comment characters from <code>HAVING GROUPING_ID(D.Name, E.JobTitle) = 1;</code>.</p>
+<div id="code-snippet-5" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode(&#39;CodeSnippetContainerCode_08b5a340-f5d7-46b9-b1b1-2f71de1a2298&#39;);" ms.cmptyp="CodeSnippet">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_08b5a340-f5d7-46b9-b1b1-2f71de1a2298" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>SELECT D.Name  
+    ,E.JobTitle  
+    ,GROUPING_ID(D.Name, E.JobTitle) AS 'Grouping Level'  
+    ,COUNT(E.BusinessEntityID) AS N'Employee Count'  
+FROM HumanResources.Employee AS E  
+    INNER JOIN HumanResources.EmployeeDepartmentHistory AS DH  
+        ON E.BusinessEntityID = DH.BusinessEntityID  
+    INNER JOIN HumanResources.Department AS D  
+        ON D.DepartmentID = DH.DepartmentID       
+WHERE DH.EndDate IS NULL  
+    AND D.DepartmentID IN (12,14)  
+GROUP BY ROLLUP(D.Name, E.JobTitle)  
+--HAVING GROUPING_ID(D.Name, E.JobTitle) = 0; --All titles  
+--HAVING GROUPING_ID(D.Name, E.JobTitle) = 1; --Group by Name;  
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+<p>Here is the unfiltered result set.</p><div class="contentTableWrapper"><table responsive="true" summary="table"><thead><tr responsive="true"><th scope="col">Name</th><th scope="col">Title</th><th scope="col">Grouping Level</th><th scope="col">Employee Count</th><th scope="col">Name</th></tr></thead><tbody><tr><td data-th="Name">Document Control</td><td data-th="Title">Control Specialist</td><td data-th="Grouping Level">0</td><td data-th="Employee Count">2</td><td data-th="Name">Document Control</td></tr><tr><td data-th="Name">Document Control</td><td data-th="Title">Document Control Assistant</td><td data-th="Grouping Level">0</td><td data-th="Employee Count">2</td><td data-th="Name">Document Control</td></tr><tr><td data-th="Name">Document Control</td><td data-th="Title">Document Control Manager</td><td data-th="Grouping Level">0</td><td data-th="Employee Count">1</td><td data-th="Name">Document Control</td></tr><tr><td data-th="Name">Document Control</td><td data-th="Title">NULL</td><td data-th="Grouping Level">1</td><td data-th="Employee Count">5</td><td data-th="Name">Document Control</td></tr><tr><td data-th="Name">Facilities and Maintenance</td><td data-th="Title">Facilities Administrative Assistant</td><td data-th="Grouping Level">0</td><td data-th="Employee Count">1</td><td data-th="Name">Facilities and Maintenance</td></tr><tr><td data-th="Name">Facilities and Maintenance</td><td data-th="Title">Facilities Manager</td><td data-th="Grouping Level">0</td><td data-th="Employee Count">1</td><td data-th="Name">Facilities and Maintenance</td></tr><tr><td data-th="Name">Facilities and Maintenance</td><td data-th="Title">Janitor</td><td data-th="Grouping Level">0</td><td data-th="Employee Count">4</td><td data-th="Name">Facilities and Maintenance</td></tr><tr><td data-th="Name">Facilities and Maintenance</td><td data-th="Title">Maintenance Supervisor</td><td data-th="Grouping Level">0</td><td data-th="Employee Count">1</td><td data-th="Name">Facilities and Maintenance</td></tr><tr><td data-th="Name">Facilities and Maintenance</td><td data-th="Title">NULL</td><td data-th="Grouping Level">1</td><td data-th="Employee Count">7</td><td data-th="Name">Facilities and Maintenance</td></tr><tr><td data-th="Name">NULL</td><td data-th="Title">NULL</td><td data-th="Grouping Level">3</td><td data-th="Employee Count">12</td><td data-th="Name">NULL</td></tr></tbody></table></div><h4 class="subHeading"><a id="Complex-Example"></a>Complex Example</h4><p>The following example uses <code>GROUPING_ID()</code> to filter a result set that contains multiple grouping levels by grouping level. Similar code can be used to create a view that has several grouping levels and a stored procedure that calls the view by passing a parameter that filters the view by grouping level. The example uses the AdventureWorks2012 database.</p>
+<div id="code-snippet-6" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode(&#39;CodeSnippetContainerCode_9258c247-59e6-4949-8905-0fee54452f88&#39;);" ms.cmptyp="CodeSnippet">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_9258c247-59e6-4949-8905-0fee54452f88" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>DECLARE @Grouping nvarchar(50);  
+DECLARE @GroupingLevel smallint;  
+SET @Grouping = N'CountryRegionCode Total';  
+  
+SELECT @GroupingLevel = (  
+    CASE @Grouping  
+        WHEN N'Grand Total'             THEN 15  
+        WHEN N'SalesPerson Total'       THEN 14  
+        WHEN N'Store Total'             THEN 13  
+        WHEN N'Store SalesPerson Total' THEN 12  
+        WHEN N'CountryRegionCode Total' THEN 11  
+        WHEN N'Group Total'             THEN 7  
+        ELSE N'Unknown'  
+    END);  
+  
+SELECT   
+    T.[Group]  
+    ,T.CountryRegionCode  
+    ,S.Name AS N'Store'  
+    ,(SELECT P.FirstName + ' ' + P.LastName   
+        FROM Person.Person AS P   
+        WHERE P.BusinessEntityID = H.SalesPersonID)  
+        AS N'Sales Person'  
+    ,SUM(TotalDue)AS N'TotalSold'  
+    ,CAST(GROUPING(T.[Group])AS char(1)) +   
+        CAST(GROUPING(T.CountryRegionCode)AS char(1)) +   
+        CAST(GROUPING(S.Name)AS char(1)) +   
+        CAST(GROUPING(H.SalesPersonID)AS char(1))   
+        AS N'GROUPING base-2'  
+    ,GROUPING_ID((T.[Group])  
+        ,(T.CountryRegionCode),(S.Name),(H.SalesPersonID)  
+        ) AS N'GROUPING_ID'  
+    ,CASE   
+        WHEN GROUPING_ID(  
+            (T.[Group]),(T.CountryRegionCode)  
+            ,(S.Name),(H.SalesPersonID)  
+            ) = 15 THEN N'Grand Total'  
+        WHEN GROUPING_ID(  
+            (T.[Group]),(T.CountryRegionCode)  
+            ,(S.Name),(H.SalesPersonID)  
+            ) = 14 THEN N'SalesPerson Total'  
+        WHEN GROUPING_ID(  
+            (T.[Group]),(T.CountryRegionCode)  
+            ,(S.Name),(H.SalesPersonID)  
+            ) = 13 THEN N'Store Total'  
+        WHEN GROUPING_ID(  
+            (T.[Group]),(T.CountryRegionCode)  
+            ,(S.Name),(H.SalesPersonID)  
+            ) = 12 THEN N'Store SalesPerson Total'  
+        WHEN GROUPING_ID(  
+            (T.[Group]),(T.CountryRegionCode)  
+            ,(S.Name),(H.SalesPersonID)  
+            ) = 11 THEN N'CountryRegionCode Total'  
+        WHEN GROUPING_ID(  
+            (T.[Group]),(T.CountryRegionCode)  
+            ,(S.Name),(H.SalesPersonID)  
+            ) =  7 THEN N'Group Total'  
+        ELSE N'Error'  
+        END AS N'Level'  
+FROM Sales.Customer AS C  
+    INNER JOIN Sales.Store AS S  
+        ON C.StoreID  = S.BusinessEntityID   
+    INNER JOIN Sales.SalesTerritory AS T  
+        ON C.TerritoryID  = T.TerritoryID   
+    INNER JOIN Sales.SalesOrderHeader AS H  
+        ON C.CustomerID = H.CustomerID  
+GROUP BY GROUPING SETS ((S.Name,H.SalesPersonID)  
+    ,(H.SalesPersonID),(S.Name)  
+    ,(T.[Group]),(T.CountryRegionCode),()  
+    )  
+HAVING GROUPING_ID(  
+    (T.[Group]),(T.CountryRegionCode),(S.Name),(H.SalesPersonID)  
+    ) = @GroupingLevel  
+ORDER BY   
+    GROUPING_ID(S.Name,H.SalesPersonID),GROUPING_ID((T.[Group])  
+    ,(T.CountryRegionCode)  
+    ,(S.Name)  
+    ,(H.SalesPersonID))ASC;  
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+<h3 class="subHeading"><a id="C-Using-GROUPING_ID-with-ROLLUP-and-CUBE-to-identify-grouping-levels"></a>C. Using GROUPING_ID () with ROLLUP and CUBE to identify grouping levels</h3><p>The code in the following examples show using <code>GROUPING()</code> to compute the <code>Bit Vector(base-2)</code> column. <code>GROUPING_ID()</code> is used to compute the corresponding <code>Integer Equivalent</code> column. The column order in the <code>GROUPING_ID()</code> function is the opposite of the column order of the columns that are concatenated by the <code>GROUPING()</code> function.</p><p>In these examples, <code>GROUPING_ID()</code> is used to create a value for each row in the <code>Grouping Level</code> column to identify the level of grouping. Grouping levels are not always a consecutive list of integers that start with 1 (0, 1, 2,...<em>n</em>).</p><div class="contentTableWrapper"><table summary="table"><tbody><tr><th scope="col"><span><img id="s-e6f6a65cf14f462597b64ac058dbe1d0-system-media-system-caps-icon-note" alt="System_CAPS_ICON_note.jpg" src="./GROUPING_ID (Transact-SQL)_files/IC101471.jpeg" title="System_CAPS_ICON_note.jpg" xmlns=""></span>&nbsp;<token space="preserve">Note </token></th></tr><tr><td><p><br>
+GROUPING and GROUPING_ID can be used n a HAVING clause to filter a result set.</p></td></tr></tbody></table></div><h4 class="subHeading"><a id="ROLLUP-Example"></a>ROLLUP Example</h4><p>In this example, all grouping levels do not appear as they do in the following CUBE example. If the order of the columns in the <code>ROLLUP</code> list is changed, the level values in the <code>Grouping Level</code> column will also have to be changed. The example uses the AdventureWorks2012 database.</p>
+<div id="code-snippet-7" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode(&#39;CodeSnippetContainerCode_53526f95-c60b-4038-8ac1-2d1ddbf9eaf4&#39;);" ms.cmptyp="CodeSnippet">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_53526f95-c60b-4038-8ac1-2d1ddbf9eaf4" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>SELECT DATEPART(yyyy,OrderDate) AS N'Year'  
+    ,DATEPART(mm,OrderDate) AS N'Month'  
+    ,DATEPART(dd,OrderDate) AS N'Day'  
+    ,SUM(TotalDue) AS N'Total Due'  
+    ,CAST(GROUPING(DATEPART(dd,OrderDate))AS char(1)) +   
+        CAST(GROUPING(DATEPART(mm,OrderDate))AS char(1)) +   
+        CAST(GROUPING(DATEPART(yyyy,OrderDate))AS char(1))   
+     AS N'Bit Vector(base-2)'  
+    ,GROUPING_ID(DATEPART(yyyy,OrderDate)  
+        ,DATEPART(mm,OrderDate)  
+        ,DATEPART(dd,OrderDate))   
+        AS N'Integer Equivalent'  
+    ,CASE  
+        WHEN GROUPING_ID(DATEPART(yyyy,OrderDate)  
+            ,DATEPART(mm,OrderDate),DATEPART(dd,OrderDate)  
+            ) = 0 THEN N'Year Month Day'  
+        WHEN GROUPING_ID(DATEPART(yyyy,OrderDate)  
+            ,DATEPART(mm,OrderDate),DATEPART(dd,OrderDate)  
+            ) = 1 THEN N'Year Month'  
+        WHEN GROUPING_ID(DATEPART(yyyy,OrderDate)  
+            ,DATEPART(mm,OrderDate),DATEPART(dd,OrderDate)  
+            ) = 2 THEN N'not used'  
+        WHEN GROUPING_ID(DATEPART(yyyy,OrderDate)  
+            ,DATEPART(mm,OrderDate),DATEPART(dd,OrderDate)  
+            ) = 3 THEN N'Year'  
+        WHEN GROUPING_ID(DATEPART(yyyy,OrderDate)  
+            ,DATEPART(mm,OrderDate),DATEPART(dd,OrderDate)  
+            ) = 4 THEN N'not used'  
+        WHEN GROUPING_ID(DATEPART(yyyy,OrderDate)  
+            ,DATEPART(mm,OrderDate),DATEPART(dd,OrderDate)  
+            ) = 5 THEN N'not used'  
+        WHEN GROUPING_ID(DATEPART(yyyy,OrderDate)  
+            ,DATEPART(mm,OrderDate),DATEPART(dd,OrderDate)  
+            ) = 6 THEN N'not used'  
+        WHEN GROUPING_ID(DATEPART(yyyy,OrderDate)  
+            ,DATEPART(mm,OrderDate),DATEPART(dd,OrderDate)  
+            ) = 7 THEN N'Grand Total'  
+    ELSE N'Error'  
+    END AS N'Grouping Level'  
+FROM Sales.SalesOrderHeader  
+WHERE DATEPART(yyyy,OrderDate) IN(N'2007',N'2008')  
+    AND DATEPART(mm,OrderDate) IN(1,2)  
+    AND DATEPART(dd,OrderDate) IN(1,2)  
+GROUP BY ROLLUP(DATEPART(yyyy,OrderDate)  
+        ,DATEPART(mm,OrderDate)  
+        ,DATEPART(dd,OrderDate))  
+ORDER BY GROUPING_ID(DATEPART(mm,OrderDate)  
+    ,DATEPART(yyyy,OrderDate)  
+    ,DATEPART(dd,OrderDate)  
+    )  
+    ,DATEPART(yyyy,OrderDate)  
+    ,DATEPART(mm,OrderDate)  
+    ,DATEPART(dd,OrderDate);  
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+<p>Here is a partial result set.</p><div class="contentTableWrapper"><table responsive="true" summary="table"><thead><tr responsive="true"><th scope="col">Year</th><th scope="col">Month</th><th scope="col">Day</th><th scope="col">Total Due</th><th scope="col">Bit Vector (base-2)</th><th scope="col">Integer Equivalent</th><th scope="col">Grouping Level</th></tr></thead><tbody><tr><td data-th="Year">2007</td><td data-th="Month">1</td><td data-th="Day">1</td><td data-th="Total Due">1497452.6066</td><td data-th="Bit Vector (base-2)">000</td><td data-th="Integer Equivalent">0</td><td data-th="Grouping Level">Year Month Day</td></tr><tr><td data-th="Year">2007</td><td data-th="Month">1</td><td data-th="Day">2</td><td data-th="Total Due">21772.3494</td><td data-th="Bit Vector (base-2)">000</td><td data-th="Integer Equivalent">0</td><td data-th="Grouping Level">Year Month Day</td></tr><tr><td data-th="Year">2007</td><td data-th="Month">2</td><td data-th="Day">1</td><td data-th="Total Due">2705653.5913</td><td data-th="Bit Vector (base-2)">000</td><td data-th="Integer Equivalent">0</td><td data-th="Grouping Level">Year Month Day</td></tr><tr><td data-th="Year">2007</td><td data-th="Month">2</td><td data-th="Day">2</td><td data-th="Total Due">21684.4068</td><td data-th="Bit Vector (base-2)">000</td><td data-th="Integer Equivalent">0</td><td data-th="Grouping Level">Year Month Day</td></tr><tr><td data-th="Year">2008</td><td data-th="Month">1</td><td data-th="Day">1</td><td data-th="Total Due">1908122.0967</td><td data-th="Bit Vector (base-2)">000</td><td data-th="Integer Equivalent">0</td><td data-th="Grouping Level">Year Month Day</td></tr><tr><td data-th="Year">2008</td><td data-th="Month">1</td><td data-th="Day">2</td><td data-th="Total Due">46458.0691</td><td data-th="Bit Vector (base-2)">000</td><td data-th="Integer Equivalent">0</td><td data-th="Grouping Level">Year Month Day</td></tr><tr><td data-th="Year">2008</td><td data-th="Month">2</td><td data-th="Day">1</td><td data-th="Total Due">3108771.9729</td><td data-th="Bit Vector (base-2)">000</td><td data-th="Integer Equivalent">0</td><td data-th="Grouping Level">Year Month Day</td></tr><tr><td data-th="Year">2008</td><td data-th="Month">2</td><td data-th="Day">2</td><td data-th="Total Due">54598.5488</td><td data-th="Bit Vector (base-2)">000</td><td data-th="Integer Equivalent">0</td><td data-th="Grouping Level">Year Month Day</td></tr><tr><td data-th="Year">2007</td><td data-th="Month">1</td><td data-th="Day">NULL</td><td data-th="Total Due">1519224.956</td><td data-th="Bit Vector (base-2)">100</td><td data-th="Integer Equivalent">1</td><td data-th="Grouping Level">Year Month</td></tr><tr><td data-th="Year">2007</td><td data-th="Month">2</td><td data-th="Day">NULL</td><td data-th="Total Due">2727337.9981</td><td data-th="Bit Vector (base-2)">100</td><td data-th="Integer Equivalent">1</td><td data-th="Grouping Level">Year Month</td></tr><tr><td data-th="Year">2008</td><td data-th="Month">1</td><td data-th="Day">NULL</td><td data-th="Total Due">1954580.1658</td><td data-th="Bit Vector (base-2)">100</td><td data-th="Integer Equivalent">1</td><td data-th="Grouping Level">Year Month</td></tr><tr><td data-th="Year">2008</td><td data-th="Month">2</td><td data-th="Day">NULL</td><td data-th="Total Due">3163370.5217</td><td data-th="Bit Vector (base-2)">100</td><td data-th="Integer Equivalent">1</td><td data-th="Grouping Level">Year Month</td></tr><tr><td data-th="Year">2007</td><td data-th="Month">NULL</td><td data-th="Day">NULL</td><td data-th="Total Due">4246562.9541</td><td data-th="Bit Vector (base-2)">110</td><td data-th="Integer Equivalent">3</td><td data-th="Grouping Level">Year</td></tr><tr><td data-th="Year">2008</td><td data-th="Month">NULL</td><td data-th="Day">NULL</td><td data-th="Total Due">5117950.6875</td><td data-th="Bit Vector (base-2)">110</td><td data-th="Integer Equivalent">3</td><td data-th="Grouping Level">Year</td></tr><tr><td data-th="Year">NULL</td><td data-th="Month">NULL</td><td data-th="Day">NULL</td><td data-th="Total Due">9364513.6416</td><td data-th="Bit Vector (base-2)">111</td><td data-th="Integer Equivalent">7</td><td data-th="Grouping Level">Grand Total</td></tr></tbody></table></div><h4 class="subHeading"><a id="CUBE-Example"></a>CUBE Example</h4><p>In this example, the <code>GROUPING_ID()</code> function is used to create a value for each row in the <code>Grouping Level</code> column to identify the level of grouping.</p><p>Unlike <code>ROLLUP</code> in the previous example, <code>CUBE</code> outputs all grouping levels. If the order of the columns in the <code>CUBE</code> list is changed, the level values in the <code>Grouping Level</code> column will also have to be changed. The example uses the AdventureWorks2012 database</p>
+<div id="code-snippet-8" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode(&#39;CodeSnippetContainerCode_f217b673-271a-4620-a9ac-2842981d4e15&#39;);" ms.cmptyp="CodeSnippet">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_f217b673-271a-4620-a9ac-2842981d4e15" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>SELECT DATEPART(yyyy,OrderDate) AS N'Year'  
+    ,DATEPART(mm,OrderDate) AS N'Month'  
+    ,DATEPART(dd,OrderDate) AS N'Day'  
+    ,SUM(TotalDue) AS N'Total Due'  
+    ,CAST(GROUPING(DATEPART(dd,OrderDate))AS char(1)) +   
+        CAST(GROUPING(DATEPART(mm,OrderDate))AS char(1)) +   
+        CAST(GROUPING(DATEPART(yyyy,OrderDate))AS char(1))   
+        AS N'Bit Vector(base-2)'  
+    ,GROUPING_ID(DATEPART(yyyy,OrderDate)  
+        ,DATEPART(mm,OrderDate)  
+        ,DATEPART(dd,OrderDate))   
+        AS N'Integer Equivalent'  
+    ,CASE  
+        WHEN GROUPING_ID(DATEPART(yyyy,OrderDate)  
+            ,DATEPART(mm,OrderDate),DATEPART(dd,OrderDate)  
+            ) = 0 THEN N'Year Month Day'  
+        WHEN GROUPING_ID(DATEPART(yyyy,OrderDate)   
+            ,DATEPART(mm,OrderDate),DATEPART(dd,OrderDate)  
+            ) = 1 THEN N'Year Month'  
+        WHEN GROUPING_ID(DATEPART(yyyy,OrderDate)   
+            ,DATEPART(mm,OrderDate),DATEPART(dd,OrderDate)  
+            ) = 2 THEN N'Year Day'  
+        WHEN GROUPING_ID(DATEPART(yyyy,OrderDate)   
+            ,DATEPART(mm,OrderDate),DATEPART(dd,OrderDate)  
+            ) = 3 THEN N'Year'  
+        WHEN GROUPING_ID(DATEPART(yyyy,OrderDate)   
+            ,DATEPART(mm,OrderDate),DATEPART(dd,OrderDate)  
+            ) = 4 THEN N'Month Day'  
+        WHEN GROUPING_ID(DATEPART(yyyy,OrderDate)   
+            ,DATEPART(mm,OrderDate),DATEPART(dd,OrderDate)  
+            ) = 5 THEN N'Month'  
+        WHEN GROUPING_ID(DATEPART(yyyy,OrderDate)   
+            ,DATEPART(mm,OrderDate),DATEPART(dd,OrderDate)  
+            ) = 6 THEN N'Day'  
+        WHEN GROUPING_ID(DATEPART(yyyy,OrderDate)   
+            ,DATEPART(mm,OrderDate),DATEPART(dd,OrderDate)  
+            ) = 7 THEN N'Grand Total'  
+    ELSE N'Error'  
+    END AS N'Grouping Level'  
+FROM Sales.SalesOrderHeader  
+WHERE DATEPART(yyyy,OrderDate) IN(N'2007',N'2008')  
+    AND DATEPART(mm,OrderDate) IN(1,2)  
+    AND DATEPART(dd,OrderDate) IN(1,2)  
+GROUP BY CUBE(DATEPART(yyyy,OrderDate)  
+    ,DATEPART(mm,OrderDate)  
+    ,DATEPART(dd,OrderDate))  
+ORDER BY GROUPING_ID(DATEPART(yyyy,OrderDate)  
+    ,DATEPART(mm,OrderDate)  
+    ,DATEPART(dd,OrderDate)  
+    )  
+    ,DATEPART(yyyy,OrderDate)  
+    ,DATEPART(mm,OrderDate)  
+    ,DATEPART(dd,OrderDate);  
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+<p>Here is a partial result set.</p><div class="contentTableWrapper"><table responsive="true" summary="table"><thead><tr responsive="true"><th scope="col">Year</th><th scope="col">Month</th><th scope="col">Day</th><th scope="col">Total Due</th><th scope="col">Bit Vector (base-2)</th><th scope="col">Integer Equivalent</th><th scope="col">Grouping Level</th></tr></thead><tbody><tr><td data-th="Year">2007</td><td data-th="Month">1</td><td data-th="Day">1</td><td data-th="Total Due">1497452.6066</td><td data-th="Bit Vector (base-2)">000</td><td data-th="Integer Equivalent">0</td><td data-th="Grouping Level">Year Month Day</td></tr><tr><td data-th="Year">2007</td><td data-th="Month">1</td><td data-th="Day">2</td><td data-th="Total Due">21772.3494</td><td data-th="Bit Vector (base-2)">000</td><td data-th="Integer Equivalent">0</td><td data-th="Grouping Level">Year Month Day</td></tr><tr><td data-th="Year">2007</td><td data-th="Month">2</td><td data-th="Day">1</td><td data-th="Total Due">2705653.5913</td><td data-th="Bit Vector (base-2)">000</td><td data-th="Integer Equivalent">0</td><td data-th="Grouping Level">Year Month Day</td></tr><tr><td data-th="Year">2007</td><td data-th="Month">2</td><td data-th="Day">2</td><td data-th="Total Due">21684.4068</td><td data-th="Bit Vector (base-2)">000</td><td data-th="Integer Equivalent">0</td><td data-th="Grouping Level">Year Month Day</td></tr><tr><td data-th="Year">2008</td><td data-th="Month">1</td><td data-th="Day">1</td><td data-th="Total Due">1908122.0967</td><td data-th="Bit Vector (base-2)">000</td><td data-th="Integer Equivalent">0</td><td data-th="Grouping Level">Year Month Day</td></tr><tr><td data-th="Year">2008</td><td data-th="Month">1</td><td data-th="Day">2</td><td data-th="Total Due">46458.0691</td><td data-th="Bit Vector (base-2)">000</td><td data-th="Integer Equivalent">0</td><td data-th="Grouping Level">Year Month Day</td></tr><tr><td data-th="Year">2008</td><td data-th="Month">2</td><td data-th="Day">1</td><td data-th="Total Due">3108771.9729</td><td data-th="Bit Vector (base-2)">000</td><td data-th="Integer Equivalent">0</td><td data-th="Grouping Level">Year Month Day</td></tr><tr><td data-th="Year">2008</td><td data-th="Month">2</td><td data-th="Day">2</td><td data-th="Total Due">54598.5488</td><td data-th="Bit Vector (base-2)">000</td><td data-th="Integer Equivalent">0</td><td data-th="Grouping Level">Year Month Day</td></tr><tr><td data-th="Year">2007</td><td data-th="Month">1</td><td data-th="Day">NULL</td><td data-th="Total Due">1519224.956</td><td data-th="Bit Vector (base-2)">100</td><td data-th="Integer Equivalent">1</td><td data-th="Grouping Level">Year Month</td></tr><tr><td data-th="Year">2007</td><td data-th="Month">2</td><td data-th="Day">NULL</td><td data-th="Total Due">2727337.9981</td><td data-th="Bit Vector (base-2)">100</td><td data-th="Integer Equivalent">1</td><td data-th="Grouping Level">Year Month</td></tr><tr><td data-th="Year">2008</td><td data-th="Month">1</td><td data-th="Day">NULL</td><td data-th="Total Due">1954580.1658</td><td data-th="Bit Vector (base-2)">100</td><td data-th="Integer Equivalent">1</td><td data-th="Grouping Level">Year Month</td></tr><tr><td data-th="Year">2008</td><td data-th="Month">2</td><td data-th="Day">NULL</td><td data-th="Total Due">3163370.5217</td><td data-th="Bit Vector (base-2)">100</td><td data-th="Integer Equivalent">1</td><td data-th="Grouping Level">Year Month</td></tr><tr><td data-th="Year">2007</td><td data-th="Month">NULL</td><td data-th="Day">1</td><td data-th="Total Due">4203106.1979</td><td data-th="Bit Vector (base-2)">010</td><td data-th="Integer Equivalent">2</td><td data-th="Grouping Level">Year Day</td></tr><tr><td data-th="Year">2007</td><td data-th="Month">NULL</td><td data-th="Day">2</td><td data-th="Total Due">43456.7562</td><td data-th="Bit Vector (base-2)">010</td><td data-th="Integer Equivalent">2</td><td data-th="Grouping Level">Year Day</td></tr><tr><td data-th="Year">2008</td><td data-th="Month">NULL</td><td data-th="Day">1</td><td data-th="Total Due">5016894.0696</td><td data-th="Bit Vector (base-2)">010</td><td data-th="Integer Equivalent">2</td><td data-th="Grouping Level">Year Day</td></tr><tr><td data-th="Year">2008</td><td data-th="Month">NULL</td><td data-th="Day">2</td><td data-th="Total Due">101056.6179</td><td data-th="Bit Vector (base-2)">010</td><td data-th="Integer Equivalent">2</td><td data-th="Grouping Level">Year Day</td></tr><tr><td data-th="Year">2007</td><td data-th="Month">NULL</td><td data-th="Day">NULL</td><td data-th="Total Due">4246562.9541</td><td data-th="Bit Vector (base-2)">110</td><td data-th="Integer Equivalent">3</td><td data-th="Grouping Level">Year</td></tr><tr><td data-th="Year">2008</td><td data-th="Month">NULL</td><td data-th="Day">NULL</td><td data-th="Total Due">5117950.6875</td><td data-th="Bit Vector (base-2)">110</td><td data-th="Integer Equivalent">3</td><td data-th="Grouping Level">Year</td></tr><tr><td data-th="Year">NULL</td><td data-th="Month">1</td><td data-th="Day">1</td><td data-th="Total Due">3405574.7033</td><td data-th="Bit Vector (base-2)">001</td><td data-th="Integer Equivalent">4</td><td data-th="Grouping Level">Month Day</td></tr><tr><td data-th="Year">NULL</td><td data-th="Month">1</td><td data-th="Day">2</td><td data-th="Total Due">68230.4185</td><td data-th="Bit Vector (base-2)">001</td><td data-th="Integer Equivalent">4</td><td data-th="Grouping Level">Month Day</td></tr><tr><td data-th="Year">NULL</td><td data-th="Month">2</td><td data-th="Day">1</td><td data-th="Total Due">5814425.5642</td><td data-th="Bit Vector (base-2)">001</td><td data-th="Integer Equivalent">4</td><td data-th="Grouping Level">Month Day</td></tr><tr><td data-th="Year">NULL</td><td data-th="Month">2</td><td data-th="Day">2</td><td data-th="Total Due">76282.9556</td><td data-th="Bit Vector (base-2)">001</td><td data-th="Integer Equivalent">4</td><td data-th="Grouping Level">Month Day</td></tr><tr><td data-th="Year">NULL</td><td data-th="Month">1</td><td data-th="Day">NULL</td><td data-th="Total Due">3473805.1218</td><td data-th="Bit Vector (base-2)">101</td><td data-th="Integer Equivalent">5</td><td data-th="Grouping Level">Month</td></tr><tr><td data-th="Year">NULL</td><td data-th="Month">2</td><td data-th="Day">NULL</td><td data-th="Total Due">5890708.5198</td><td data-th="Bit Vector (base-2)">101</td><td data-th="Integer Equivalent">5</td><td data-th="Grouping Level">Month</td></tr><tr><td data-th="Year">NULL</td><td data-th="Month">NULL</td><td data-th="Day">1</td><td data-th="Total Due">9220000.2675</td><td data-th="Bit Vector (base-2)">011</td><td data-th="Integer Equivalent">6</td><td data-th="Grouping Level">Day</td></tr><tr><td data-th="Year">NULL</td><td data-th="Month">NULL</td><td data-th="Day">2</td><td data-th="Total Due">144513.3741</td><td data-th="Bit Vector (base-2)">011</td><td data-th="Integer Equivalent">6</td><td data-th="Grouping Level">Day</td></tr><tr><td data-th="Year">NULL</td><td data-th="Month">NULL</td><td data-th="Day">NULL</td><td data-th="Total Due">9364513.6416</td><td data-th="Bit Vector (base-2)">111</td><td data-th="Integer Equivalent">7</td><td data-th="Grouping Level">Grand Total</td></tr></tbody></table></div><div><h2 class="LW_CollapsibleArea_TitleDiv"><div><a class="LW_CollapsibleArea_TitleAhref" title="" role="heading"><span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span><span class="LW_CollapsibleArea_Title">See Also</span></a><div id="Anchor_8" class="LW_CollapsibleArea_Anchor_Div"><a href="https://msdn.microsoft.com/en-us/library/bb510624.aspx#Anchor_8" class="LW_CollapsibleArea_Anchor_Img" title="Right-click to copy and share the link for this section"></a></div><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr"></div></div></h2><div class="sectionblock"><a id="See-Also"></a></div></div><p><a href="https://msdn.microsoft.com/en-us/library/ms178544.aspx">GROUPING (Transact-SQL)</a><br><a href="https://msdn.microsoft.com/en-us/library/ms177673.aspx">GROUP BY (Transact-SQL)</a></p></div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<script id="CommentTemplate" type="text/x-jquery-tmpl">
+    <div class="communityContentAnnotation">
+        <a name="${Index}"></a>
+        <h3>
+            ${Title}
+        </h3>
+        <div class="communityContentAnnotationBody">
+            {{html Body}}
+        </div>
+        <div class="communityContentAnnotationInfo">
+            <div class="communityContentAnnotationAvatarContainer">
+                <a href="${UserAvatar.Href}" title="${UserAvatar.ToolTip}" class="communityContentAnnotationAvatar"><img src="${UserAvatar.ImageUrl}" alt="${UserAvatar.ImageAltText}" width="34" height="34" /></a>
+            </div>
+            <div class="communityContentAnnotationUserDateContainer">
+                <div class="communityContentAnnotationUserContainer">
+                    <a href="${UserAvatar.Href}">
+                        ${User}
+                    </a>
+                </div>
+                <div class="communityContentAnnotationDateContainer">
+                    <span>${Date}</span>
+                    
+                    {{if EditLink}}
+                        <span>
+                            <a href="${EditLink.Href}" title="${EditLink.ToolTip}" class="communityContentCommentEditLink">${EditLink.Title}</a>
+                        </span>
+                    {{/if}}
+
+                    {{if DeleteLink}}
+                        <span>
+                            <a href="${DeleteLink.Href}" title="${DeleteLink.ToolTip}" class="communityContentDeleteLink">${DeleteLink.Title}</a>
+                        </span>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<div class="communityContentContainer" ms.cmpgrp="community">
+    <div id="CommunityContentHeader" class="communityContentHeader">
+        <div class="communityContentHeaderTitleContainer">
+            <h2>Community Additions</h2>
+                <a class="communityContentAddLink" href="https://msdn.microsoft.com/en-us/library/community/add/bb510624.aspx">
+                    <span class="communityContentAddButton" title="Add">
+                        ADD
+                    </span>
+                </a>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+    
+    <div id="CommunityComments" data-url="/en-us/library/community/comments/bb510624.aspx"></div>
+</div>
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit">Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected">Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings.">
+
+
+
+    </div>
+<div id="rightNavigationMenu" ms.cmpgrp="right nav">
+    <div id="mobileButtons">
+        
+    </div>
+    <div id="navMain">
+        <div id="closeNavigation">
+            <a class="tocCloseSmall" id="closeButton"></a>
+        </div>
+        <div id="navigationButtons">
+            <a id="isd_print" href="https://msdn.microsoft.com/en-us/library/bb510624(d=printer).aspx" rel="nofollow"><ins class="print"></ins>Print </a>
+            <a id="isd_printABook2" href="https://msdn.microsoft.com/en-us/library/export/help/?returnurl=%2fen-us%2flibrary%2fbb510624.aspx">
+                <ins class="export"></ins>Export (<span class="count">0</span>)
+            </a>
+            <a id="isdShare" href="https://msdn.microsoft.com/en-us/library/bb510624.aspx#" role="button" aria-expanded="false">
+                <ins class="share"></ins>Share
+            </a>
+            <div id="socials" style="display: none">
+                <a class="isdFacebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmsdn.microsoft.com%2Fen-us%2Flibrary%2Fbb510624.aspx" aria-label="Share on Facebook">
+                    <ins class="facebook"></ins>
+                </a>
+                <a class="isdTwitter" href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fmsdn.microsoft.com%2Fen-us%2Flibrary%2Fbb510624.aspx&amp;text=GROUPING_ID%20(Transact-SQL)&amp;tw_p=tweetbutton&amp;url=https%3A%2F%2Fmsdn.microsoft.com%2Fen-us%2Flibrary%2Fbb510624.aspx" aria-label="Share on Twitter">
+                    <ins class="twitter"></ins>
+                </a>
+                <a class="isdGooglePlus" href="https://plus.google.com/share?url=https%3A%2F%2Fmsdn.microsoft.com%2Fen-us%2Flibrary%2Fbb510624.aspx" aria-label="Share on Google+">
+                    <ins class="googlePlus"></ins>
+                </a>
+            </div>
+        </div>
+        <div id="indoc_toc" style="" ms.cmpgrp="indoc toc">
+            <div id="indoc_title">IN THIS ARTICLE</div>
+            <ul id="indoc_toclist"><li data-index="0" class="active"><a href="https://msdn.microsoft.com/en-us/library/bb510624.aspx#Syntax">Syntax</a></li><li data-index="1"><a href="https://msdn.microsoft.com/en-us/library/bb510624.aspx#Arguments">Arguments</a></li><li data-index="2"><a href="https://msdn.microsoft.com/en-us/library/bb510624.aspx#Return Type">Return Type</a></li><li data-index="3"><a href="https://msdn.microsoft.com/en-us/library/bb510624.aspx#Remarks">Remarks</a></li><li data-index="4"><a href="https://msdn.microsoft.com/en-us/library/bb510624.aspx#Comparing GROUPING_ID () to GROUPING ()">Comparing GROUPING_ID () to GROUPING ()</a></li><li data-index="5"><a href="https://msdn.microsoft.com/en-us/library/bb510624.aspx#Technical Definition of GROUPING_ID ()">Technical Definition of GROUPING_ID ()</a></li><li data-index="6"><a href="https://msdn.microsoft.com/en-us/library/bb510624.aspx#GROUPING_ID () Equivalents">GROUPING_ID () Equivalents</a></li><li data-index="7"><a href="https://msdn.microsoft.com/en-us/library/bb510624.aspx#Examples">Examples</a></li><li data-index="8"><a href="https://msdn.microsoft.com/en-us/library/bb510624.aspx#See Also">See Also</a></li></ul>
+        </div>
+    </div>
+</div>
+<div id="rightNavigationMenuThumbnail" class="rightNavigationMenuThumbnail">
+</div>
+
+
+
+
+
+        </div>
+        <div class="clear"></div>
+
+        
+
+<input name="__RequestVerificationToken" type="hidden" value="bCPSlB0Jm5gzijR_-LRsfV0vzPI7EFMa9wu6IQYjAE_3hUrxUxEm_sn8Cz94KT5aBSkmvpJjuYYKcKu1touJWPDd9bE1">
+<input id="ratingValueSubmitUrl" type="hidden" value="https://msdn.microsoft.com/en-us/library/feedback/rate/bb510624.aspx">
+<input id="ratingAdditionalSubmitUrl" type="hidden" value="https://msdn.microsoft.com/en-us/library/feedback/additional/bb510624.aspx">
+<input id="isTopicRated" type="hidden" value="false">
+
+
+
+
+    <div id="lib-footer">
+        
+
+    
+    <link type="text/css" rel="stylesheet">
+    
+        
+    <div id="ux-footer" class="" style="" dir="ltr" ms.pgarea="footer">
+
+
+    <div id="standardRatingBefore" class="clear stdr-container-before"></div>
+    <div id="standardRating" class="stdr-container" ms.pgarea="body" style="width: 1903px; margin-left: 0px; display: block;">
+        <div class="stdr-close" style="display: none;"></div>
+        <div class="stdr-vote stdr-content">
+            <div class="stdr-content">
+                <span class="stdr-votetitle">Is this page helpful?</span>
+                <button class="stdr-yes" aria-label="Yes, this page was helpful">Yes</button>
+                <button class="stdr-no" aria-label="No, this page was not helpful">No</button>
+                <input id="s_ratingValue" type="hidden" value="">
+            </div>
+        </div>
+        <div class="stdr-feedback" style="display: none">
+            <div class="stdr-form">
+                <div class="stdr-fieldtitle">Additional feedback?</div>
+                <textarea class="stdr-detail" rows="6" maxlength="1500"></textarea>
+                <div>
+                    <span class="stdr-count"><span class="stdr-charcnt">1500</span> characters remaining</span>
+                    <div class="stdr-buttons">
+                        <button class="stdr-provide" aria-label="Submit my additional feedback">Submit</button>
+                        <button class="stdr-skip" aria-label="Skip additional feedback">Skip this</button>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="stdr-thanks" style="display: none">
+            <div class="stdr-content">
+                <span class="stdr-thankyou">Thank you!</span>
+                <span class="stdr-appreciate">We appreciate your feedback.</span>
+            </div>
+        </div>
+
+        
+        <div id="contentFeedbackQAContainer" style="display: none;"></div>
+    </div>
+    <div id="standardRatingPlaceholder" style="display: none"></div>
+    
+
+        <footer class="top" role="navigation" aria-label="footer">
+            <div data-fragmentname="LeftLinks" id="Fragment_LeftLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="linkList">
+    <h4 class="linkListTitle">Dev centers</h4>
+    <ul class="links">
+      <li>
+        <a href="https://developer.microsoft.com/en-us/windows" id="LeftLinks_2148_1" class="windowsBlue" xmlns="http://www.w3.org/1999/xhtml">Windows</a>
+      </li>
+      <li>
+        <a href="https://dev.office.com/" id="LeftLinks_2148_3" class="office" xmlns="http://www.w3.org/1999/xhtml">Office</a>
+      </li>
+      <li>
+        <a href="https://www.visualstudio.com/" id="LeftLinks_2148_4" class="visualStudio" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+      </li>
+      <li>
+        <a href="https://docs.microsoft.com/en-us/azure/" target="_blank" id="LeftLinks_2148_12" xmlns="http://www.w3.org/1999/xhtml">Microsoft Azure</a>
+      </li>
+      <li>
+        <a href="https://msdn.microsoft.com/developer-centers-msdn" id="LeftLinks_2148_5" xmlns="http://www.w3.org/1999/xhtml">More...</a>
+      </li>
+    </ul>
+  </div>
+</div>
+            <div id="rightLinks">
+                <div data-fragmentname="CenterLinks1" id="Fragment_CenterLinks1" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="linkList">
+    <h4 class="linkListTitle">Learning resources</h4>
+    <ul class="links">
+      <li>
+        <a href="https://mva.microsoft.com/" id="CenterLinks1_2151_4" xmlns="http://www.w3.org/1999/xhtml">Microsoft Virtual Academy</a>
+      </li>
+      <li>
+        <a href="https://channel9.msdn.com/" id="CenterLinks1_2151_5" xmlns="http://www.w3.org/1999/xhtml">Channel 9</a>
+      </li>
+      <li>
+        <a href="https://msdn.microsoft.com/magazine/" id="CenterLinks1_2151_7" xmlns="http://www.w3.org/1999/xhtml">MSDN Magazine</a>
+      </li>
+    </ul>
+  </div>
+</div>
+                <div data-fragmentname="CenterLinks2" id="Fragment_CenterLinks2" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="linkList">
+    <h4 class="linkListTitle">Community</h4>
+    <ul class="links">
+      <li>
+        <a href="https://social.msdn.microsoft.com/forums/en-us/home" id="CenterLinks2_2151_8" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+      </li>
+      <li>
+        <a href="https://blogs.msdn.microsoft.com/developer-tools/" id="CenterLinks2_2151_9" xmlns="http://www.w3.org/1999/xhtml">Blogs</a>
+      </li>
+      <li>
+        <a href="http://www.codeplex.com/" id="CenterLinks2_2151_10" xmlns="http://www.w3.org/1999/xhtml">Codeplex</a>
+      </li>
+    </ul>
+  </div>
+</div>
+                <div data-fragmentname="CenterLinks3" id="Fragment_CenterLinks3" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="linkList">
+    <h4 class="linkListTitle">Support</h4>
+    <ul class="links">
+      <li>
+        <a href="https://msdn.microsoft.com/hh361695" id="CenterLinks3_2151_11" xmlns="http://www.w3.org/1999/xhtml">Self support</a>
+      </li>
+    </ul>
+  </div>
+</div>
+                <div data-fragmentname="CenterLinks4" id="Fragment_CenterLinks4" xmlns="http://www.w3.org/1999/xhtml" class="nth-child-4n">
+  
+  <div class="linkList">
+    <h4 class="linkListTitle">Programs</h4>
+    <ul class="links">
+      <li>
+        <a href="https://bizspark.microsoft.com/Startups/Index" id="CenterLinks4_2151_13" xmlns="http://www.w3.org/1999/xhtml">BizSpark (for startups)</a>
+      </li>
+      <li>
+        <a href="https://imagine.microsoft.com/en-us" id="CenterLinks4_2151_22" xmlns="http://www.w3.org/1999/xhtml">Microsoft Imagine (for students)</a>
+      </li>
+    </ul>
+  </div>
+</div>
+            </div>
+        </footer>
+
+        <footer class="bottom" role="contentinfo">
+            <span class="localeContainer">
+                
+    <form class="selectLocale" id="selectLocaleForm" action="https://msdn.microsoft.com/en-us/selectlocale-dmc">
+        <input type="hidden" name="fromPage" value="https%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fbb510624.aspx">
+        <a href="https://msdn.microsoft.com/en-us/library/bb510624.aspx#" onclick="$(&#39;#selectLocaleForm&#39;).submit();return false;" title="Change your language">United States (English)</a>
+    </form>
+
+
+            </span>
+
+            <div data-fragmentname="BottomLinks" id="Fragment_BottomLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="linkList">
+    <ul class="links horizontal">
+      <li>
+        <a href="https://msdn.microsoft.com/en-us/flashnewsletter" id="BottomLinks_2148_7" xmlns="http://www.w3.org/1999/xhtml">Newsletter</a>
+      </li>
+      <li>
+        <a href="https://msdn.microsoft.com/en-us/dn529288" id="BottomLinks_2148_8" xmlns="http://www.w3.org/1999/xhtml">Privacy &amp; cookies</a>
+      </li>
+      <li>
+        <a href="https://msdn.microsoft.com/en-us/cc300389" id="BottomLinks_2148_9" xmlns="http://www.w3.org/1999/xhtml">Terms of use</a>
+      </li>
+      <li>
+        <a href="https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/" id="BottomLinks_2148_10" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+      </li>
+    </ul>
+  </div>
+</div>
+            <span class="logoLegal">
+                <span class="logoSpan clip67x13" role="img" tabindex="0" aria-label="microsoft logo">
+                    <img alt="logo" class="logo" src="./GROUPING_ID (Transact-SQL)_files/HeaderFooterSprite.png">
+                </span>
+                <span class="copyright">© 2017 Microsoft</span>
+            </span>
+        </footer>
+    </div>
+    
+
+    </div>
+
+
+        <div class="footerPrintView">
+            <div class="footerCopyrightPrintView">© 2017 Microsoft</div>
+        </div>
+
+        
+        
+
+        
+        
+        
+
+    <input id="tocPaddingPerLevel" type="hidden" value="17">
+
+
+
+        <input id="MtpsDevice" type="hidden" value="Default">
+
+
+<!--[CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]-->
+
+        
+        
+        
+            
+        
+
+<!--[CDATA[ WebTrends view model not available or IncludeLegacyWebTrendsScriptInGlobal feature flag is off]]-->
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="oxWPxsQHkBNaPGicdbEtxqtezxP1YrquK3mEOhfuHLSxBvMq8xlNxAYNYNu_GIFqHzHmpkd2qoFb0qT9BR0CkyvFvBk1">
+</div>
+
+
+    </div>
+
+    
+    
+
+    
+
+    
+<script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"https://i-msdn.sec.s-msft.com\", \r\n\t\"js\": \"https://i2-msdn.sec.s-msft.com\", \r\n\t\"css\": \"https://i-msdn.sec.s-msft.com\", \r\n\t\"ttf\": \"https://i-msdn.sec.s-msft.com\"\r\n});\r\n/**/" },
+	{ txt: "//\n\n        window.appInsightsId = \u00275eb1b2eb-c47a-497a-a7ac-a1c230b2882f\u0027;\n        //" },
+	{ url: "https://i2-msdn.sec.s-msft.com/Combined.js?resources=0:Utilities,1:Layout,2:Header,3:Breadcrumbs,4:LibraryRightNavigationMenu,4:PrintExportButton,5:StandardRating,2:Footer,0:Topic,3:ResponsiveSupport,0:AppInsightsPerf,3:ResponsiveToc,0:ABTestControl,4:WEDCS,3:CmpgrpForHeader,1:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Epx/Themes/Base/Content:1,/Areas/Centers/Themes/StandardDevCenter/Content:2,/Areas/Library/Content:3,/Areas/Library/Themes/Base/Content:4,/Areas/Global/Content:5\u0026amp;hashKey=38EF7CAC66D30D78B9EFCE2040FED8BD\u0026amp;v=097A152B2C3864FBFC14985108EC3201" },
+	{ url: "https://i1.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026minimumTermLength=2\u0026pgArea=header\u0026brand=Msdn\u0026loc=en-us\u0026focusOnInit=false\u0026emptyWatermark=true\u0026searchButtonTooltip=Search MSDN" },
+	{ url: "https://i2-msdn.sec.s-msft.com/Areas/Epx/Themes/Base/Content/JumpRedirect.js" },
+	{ txt: "MTPS = window.MTPS || {}; MTPS.LocalizedStrings = window.MTPS.LocalizedStrings || {}; MTPS.LocalizedStrings.ExpandButtonTooltip = \u0027Expand\u0027; MTPS.LocalizedStrings.CollapseButtonTooltip = \u0027Collapse\u0027; MTPS.LocalizedStrings.EnhancedExpandTooltip = \u0027Click to expand. Double-click to expand all.\u0027; MTPS.LocalizedStrings.EnhancedCollapseTooltip = \u0027Click to collapse. Double-click to collapse all.\u0027; MTPS.LocalizedStrings.ExpandAllButtonTooltip = \u0027Expand All\u0027; MTPS.LocalizedStrings.CollapseAllButtonTooltip = \u0027Collapse All\u0027;" },
+	{ url: "https://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js" },
+	{ url: "https://i2-msdn.sec.s-msft.com/Combined.js?resources=0:CommunityContent,0:LibraryMemberFilter,1:Toc_Fixed,1:CodeSnippet,1:TopicNotInScope,1:VersionSelector,1:SurveyBroker;/Areas/Library/Content:0,/Areas/Epx/Content/Scripts:1\u0026amp;hashKey=7014190F90B8537F47B755239814958F\u0026amp;v=097A152B2C3864FBFC14985108EC3201" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script>
+
+<div id="overlayMask"></div><script src="./GROUPING_ID (Transact-SQL)_files/broker-config.js.Download"></script></body></html>

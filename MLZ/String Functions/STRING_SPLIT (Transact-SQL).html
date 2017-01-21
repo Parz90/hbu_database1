@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<!-- saved from url=(0054)https://msdn.microsoft.com/en-us/library/mt684588.aspx -->
+<html dir="ltr" xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="WT.seg_1" content="en-us"><link rel="canonical" href="https://msdn.microsoft.com/en-us/library/mt684588.aspx">
+    <title>STRING_SPLIT (Transact-SQL)</title>
+
+
+
+
+
+
+
+<meta name="DCS.dcsuri" content="/en-us/library/mt684588(d=default,l=en-us,v=sql.130).aspx">
+
+<meta name="NormalizedUrl" content="https://msdn.microsoft.com/en-us/library/mt684588(d=default,l=en-us,v=sql.130).aspx">
+
+<meta name="ms.normalizedurl" content="https://msdn.microsoft.com/en-us/library/mt684588(d=default,l=en-us,v=sql.130).aspx">
+
+<meta name="ms.prod" content="sql-non-specified">
+
+<meta name="ms.devlang" content="na">
+
+<meta name="ms.topic" content="language-reference">
+
+<meta name="AmbientContext" content="{&quot;layout.limit_max_width&quot;:true,&quot;AmbientContextId&quot;:&quot;B3372421-67DA-46BB-AAC1-DA970AA92CC7&quot;,&quot;display.use_large_font&quot;:false,&quot;insight.perf_timing&quot;:true,&quot;AmbientContextDownstream&quot;:{&quot;LogTrace&quot;:false},&quot;display.high_contrast&quot;:false,&quot;insight.use_wedcs_vnext&quot;:true}">
+
+<meta name="VotingContextUrl" content="https://msdn.microsoft.com/en-us/library/mt684588(d=default,l=en-us,v=sql.130).aspx">
+
+<meta name="MN" content="9DDD8834-2:32:28 PM">
+
+<meta name="Search.ShortId" content="mt684588">
+
+<meta name="ms.shortidmsdn" content="mt684588">
+
+<meta name="ms.locale" content="en-us">
+
+<meta name="ms.prodver" content="SQL.130">
+
+<meta name="ms.contentlang" content="EN">
+
+<meta name="ms.lang" content="EN">
+
+<meta name="ms.loc" content="US">
+
+<meta name="ms.sitever" content="2016.12.26.2">
+
+<meta name="ms.assetid" content="3273dbf3-0b4f-41e1-b97e-b4f67ad370b9">
+
+<meta name="ms.auth" content="0">
+
+<meta name="ms.technology" content="database-engine">
+
+<meta name="ms.date" content="06/10/2016">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+        
+
+
+
+
+
+
+
+
+
+    <script type="text/javascript" src="./STRING_SPLIT (Transact-SQL)_files/ai.0.js.Download" async=""></script><script type="text/javascript" data-do-not-move="true">
+        //<![CDATA[
+        var AmbientContext = null;
+
+        (function(){
+            var root = (function(){return this;}).call(null);
+
+            var GetCookie = function(name){
+                var cookies = root.document.cookie ? root.document.cookie.split('; ') : [];
+                for (var i = 0; i < cookies.length; i++) {
+                    var pos = cookies[i].indexOf('=');
+                    if (name === root.decodeURIComponent(cookies[i].slice(0, pos)))
+                    {
+                        var cookie = cookies[i].slice(pos + 1).replace(/\+/g, ' ');
+                        cookie = root.decodeURIComponent(cookie);
+                        return cookie;
+                    }
+                }
+            };
+
+            var JsonDeserialize = function(content) {
+                return root.JSON && root.JSON.parse ? root.JSON.parse(content) : (new Function('return (' + content + ')'))();
+            };
+
+            try {
+                AmbientContext = GetCookie('AmbientContext');
+                AmbientContext = AmbientContext && JsonDeserialize(AmbientContext);
+            } catch(ex) {
+            } finally {
+                AmbientContext = AmbientContext || null;
+            }
+        })();
+        //]]>
+    </script>
+
+    <script type="text/javascript" src="./STRING_SPLIT (Transact-SQL)_files/jquery-1.9.1.min.js.Download" data-do-not-move="true" data-provides="jQuery"></script>
+    
+<link rel="stylesheet" type="text/css" href="./STRING_SPLIT (Transact-SQL)_files/Combined.css"><script class="mtps-injected">try {
+/**/
+(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { 
+	"image": "https://i-msdn.sec.s-msft.com", 
+	"js": "https://i2-msdn.sec.s-msft.com", 
+	"css": "https://i-msdn.sec.s-msft.com", 
+	"ttf": "https://i-msdn.sec.s-msft.com"
+});
+/**/
+} finally { MTPS._injectNextScript_0 && MTPS._injectNextScript_0(); }</script><script class="mtps-injected">try {
+//
+
+        window.appInsightsId = '5eb1b2eb-c47a-497a-a7ac-a1c230b2882f';
+        //
+} finally { MTPS._injectNextScript_1 && MTPS._injectNextScript_1(); }</script><script class="mtps-injected" src="./STRING_SPLIT (Transact-SQL)_files/Combined.js.Download"></script><link href="./STRING_SPLIT (Transact-SQL)_files/PrintView.css" rel="stylesheet" type="text/css" media="print"><meta name="ms.layout_limit_max_width" content="true"><meta name="ms.AmbientContextId" content="B3372421-67DA-46BB-AAC1-DA970AA92CC7"><meta name="ms.display_use_large_font" content="false"><meta name="ms.insight_perf_timing" content="true"><meta name="ms.AmbientContextDownstream" content="%7B%7D"><meta name="ms.display_high_contrast" content="false"><meta name="ms.insight_use_wedcs_vnext" content="true"><meta name="ms.perf.timing" content=",,0,0,0,5,668,673,684,817,817,889,,,"><script type="text/javascript" src="./STRING_SPLIT (Transact-SQL)_files/ms.js.Download"></script><script type="text/javascript" src="./STRING_SPLIT (Transact-SQL)_files/jsll-3.2.0.js.Download"></script><script class="mtps-injected" src="./STRING_SPLIT (Transact-SQL)_files/SearchBox.jss"></script><script class="mtps-injected" src="./STRING_SPLIT (Transact-SQL)_files/JumpRedirect.js.Download"></script><script class="mtps-injected">try {
+MTPS = window.MTPS || {}; MTPS.LocalizedStrings = window.MTPS.LocalizedStrings || {}; MTPS.LocalizedStrings.ExpandButtonTooltip = 'Expand'; MTPS.LocalizedStrings.CollapseButtonTooltip = 'Collapse'; MTPS.LocalizedStrings.EnhancedExpandTooltip = 'Click to expand. Double-click to expand all.'; MTPS.LocalizedStrings.EnhancedCollapseTooltip = 'Click to collapse. Double-click to collapse all.'; MTPS.LocalizedStrings.ExpandAllButtonTooltip = 'Expand All'; MTPS.LocalizedStrings.CollapseAllButtonTooltip = 'Collapse All';
+} finally { MTPS._injectNextScript_5 && MTPS._injectNextScript_5(); }</script><script class="mtps-injected" src="./STRING_SPLIT (Transact-SQL)_files/Combined.js(1).Download"></script><script src="./STRING_SPLIT (Transact-SQL)_files/broker.js.Download"></script><script class="mtps-injected">try {
+$(document).ready(function() {
+        try {
+            var token = $("#globalRequestVerification input[name='__RequestVerificationToken']").clone();
+            $("#siteFeedbackForm").append(token);
+        } catch(err) {
+            
+        }
+    });
+} finally { MTPS._injectNextScript_7 && MTPS._injectNextScript_7(); }</script></head>
+<body class="library Chrome">
+    <div id="page">
+
+        
+
+        
+    
+
+    
+    <link type="text/css" rel="stylesheet">
+    
+        
+        
+    <input type="hidden" id="isHeaderBleeding" value="true">
+    <div id="ux-header" dir="ltr" class="ltr msdn" ms.pgarea="header" data-device-type="desktop">
+        
+
+      <header ms.pgarea="header">
+        <span id="singleCol"></span>
+        <span id="doubleCol"></span>
+        <span id="isMobile"></span>
+        <div>
+          <div class="row topRow" role="banner">
+            <div class="top">
+              <div class="left">
+                <a class="msdnLogoImg" href="https://msdn.microsoft.com/en-us" title="MSDN home" ms.cmpgrp="mslogo">
+                  <div class="clip70x15">
+                    <img alt="Microsoft Logo" id="msft-logo" class="msft-logo" src="./STRING_SPLIT (Transact-SQL)_files/HeaderFooterSprite.png">
+                  </div>
+                </a>
+                <div class="GrayPipeDiv clip1x18">
+                  <img alt="Gray Pipe" class="GrayPipe" src="./STRING_SPLIT (Transact-SQL)_files/HeaderFooterSprite.png">
+                </div>
+                  <a class="DevCenterFullNameNonMegaBlade" href="https://msdn.microsoft.com/en-us">Developer Network</a>
+                <a class="DevCenterFullName" href="https://msdn.microsoft.com/en-us">Developer Network</a>
+                <a class="DevCenterShortName" href="https://msdn.microsoft.com/en-us">Developer</a>
+              </div>
+              <div class="right" ms.cmpgrp="aux nav">
+                <div id="signIn" aria-label="Profile button">
+
+  <div class="profileImage"></div>
+
+
+
+<a class="scarabLink" href="https://login.live.com/login.srf?wa=wsignin1.0&amp;rpsnv=13&amp;ct=1484865148&amp;rver=6.7.6640.0&amp;wp=mcmbi&amp;wlcxt=msdn%24msdn%24msdn&amp;wreply=https%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fmt684588.aspx&amp;lc=1033&amp;id=254354&amp;mkt=en-us">Sign in</a></div>
+
+
+
+
+                <div class="auxNav">
+                  <div>
+                    <div data-fragmentname="Subscriptions" id="Fragment_Subscriptions" xmlns="http://www.w3.org/1999/xhtml">
+  <a href="https://my.visualstudio.com/?wt.mc_id=o~msft~msdn~nav~subscriber&amp;campaign=o~msft~msdn~nav~subscriber" id="Subscriptions_2153_1" xmlns="http://www.w3.org/1999/xhtml">
+    <p xmlns="">Subscriber portal</p>
+  </a>
+</div>
+                    <div data-fragmentname="GetTools" id="Fragment_GetTools" xmlns="http://www.w3.org/1999/xhtml">
+  <a href="https://www.visualstudio.com/free-developer-offers/" id="GetTools_2153_3" xmlns="http://www.w3.org/1999/xhtml">Get tools</a>
+</div>
+                  </div>
+                        <div>
+                            
+                        </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="row middleRow">
+            <div class="expandTop" style="display: none;">
+              <div class="left"></div>
+              <div class="right"></div>
+            </div>
+          </div>
+        </div>
+        <div id="buttomRowWrapper" class="bg_default">
+          <div class="row buttomRow bg_default">
+            <div class="bottom">
+              <div class="left" role="navigation" aria-label="header toc" ms.cmpgrp="main nav">
+                <a id="grip" class="menu-icon" href="javascript:void(0)" role="button" aria-label="navigation menu"></a>
+                
+                <div id="drawer">
+                  <div class="toc">
+                    
+        <nav>
+            <ul class="navL1" ms.cmpgrp="main nav">
+                        <li class="inactive toggle">
+                                <a href="javascript:void(0)" role="button" aria-expanded="false">Downloads</a>
+                                <ul class="navL2" style="display: none;">
+                                        <li class="inactive">
+
+                                                <a href="https://www.visualstudio.com/downloads/download-visual-studio-vs" role="link" title="Visual Studio">Visual Studio</a>
+                                        </li>
+                                        <li class="inactive">
+
+                                                <a href="https://msdn.microsoft.com/microsoft-sdks-msdn" role="link" title="SDKs">SDKs</a>
+                                        </li>
+                                        <li class="inactive toggle">
+
+                                                <a href="javascript:void(0)" title="Trial software" role="button" aria-expanded="false">Trial software</a>
+                                                <ul class="navL3" style="display: none;">
+                                                        <li class="inactive">
+                                                            <a href="https://msdn.microsoft.com/evalcenter" title="Free downloads" role="link">Free downloads</a>
+                                                        </li>
+                                                        <li class="inactive">
+                                                            <a href="https://msdn.microsoft.com/officeevaluationresources" title="Office resources" role="link">Office resources</a>
+                                                        </li>
+                                                        <li class="inactive">
+                                                            <a href="https://msdn.microsoft.com/sharepoint2013resources" title="SharePoint Server 2013 resources" role="link">SharePoint Server 2013 resources</a>
+                                                        </li>
+                                                        <li class="inactive">
+                                                            <a href="https://msdn.microsoft.com/sqlserver2014expressresources" title="SQL Server 2014 Express resources" role="link">SQL Server 2014 Express resources</a>
+                                                        </li>
+                                                        <li class="inactive">
+                                                            <a href="https://msdn.microsoft.com/windowsserver2012r2resources" title="Windows Server 2012 resources" role="link">Windows Server 2012 resources</a>
+                                                        </li>
+                                                </ul>
+                                        </li>
+                                </ul>
+                        </li>
+                        <li class="inactive toggle">
+                                <a href="javascript:void(0)" role="button" aria-expanded="false">Programs</a>
+                                <ul class="navL2" style="display: none;">
+                                        <li class="inactive toggle">
+
+                                                <a href="javascript:void(0)" title="Subscriptions" role="button" aria-expanded="false">Subscriptions</a>
+                                                <ul class="navL3" style="display: none;">
+                                                        <li class="inactive">
+                                                            <a href="https://msdn.microsoft.com/msdn-subscriptions-overview" title="Overview" role="link">Overview</a>
+                                                        </li>
+                                                        <li class="inactive">
+                                                            <a href="https://msdn.microsoft.com/msdn-subscriptions-administration" title="Administrators" role="link">Administrators</a>
+                                                        </li>
+                                                </ul>
+                                        </li>
+                                        <li class="inactive toggle">
+
+                                                <a href="javascript:void(0)" title="Students" role="button" aria-expanded="false">Students</a>
+                                                <ul class="navL3" style="display: none;">
+                                                        <li class="inactive">
+                                                            <a href="https://msdn.microsoft.com/imagine/imagine-home" title="Microsoft Imagine" role="link">Microsoft Imagine</a>
+                                                        </li>
+                                                        <li class="inactive">
+                                                            <a href="https://msdn.microsoft.com/microsoftstudentpartners" title="Microsoft Student Partners" role="link">Microsoft Student Partners</a>
+                                                        </li>
+                                                </ul>
+                                        </li>
+                                        <li class="inactive">
+
+                                                <a href="https://msdn.microsoft.com/applicationbuilder" role="link" title="ISV">ISV</a>
+                                        </li>
+                                        <li class="inactive">
+
+                                                <a href="https://www.microsoft.com/bizspark" role="link" title="Startups">Startups</a>
+                                        </li>
+                                        <li class="inactive">
+
+                                                <a href="https://events.microsoft.com/" role="link" title="Events">Events</a>
+                                        </li>
+                                </ul>
+                        </li>
+                        <li class="inactive toggle">
+                                <a href="javascript:void(0)" role="button" aria-expanded="false">Community</a>
+                                <ul class="navL2" style="display: none;">
+                                        <li class="inactive">
+
+                                                <a href="https://msdn.microsoft.com/magazine/dd767791" role="link" title="Magazine">Magazine</a>
+                                        </li>
+                                        <li class="inactive">
+
+                                                <a href="https://social.msdn.microsoft.com/forums/" role="link" title="Forums">Forums</a>
+                                        </li>
+                                        <li class="inactive">
+
+                                                <a href="https://blogs.msdn.microsoft.com/" role="link" title="Blogs">Blogs</a>
+                                        </li>
+                                        <li class="inactive">
+
+                                                <a href="http://channel9.msdn.com/" role="link" title="Channel 9">Channel 9</a>
+                                        </li>
+                                </ul>
+                        </li>
+                        <li class="inactive current toggle">
+                                <a href="javascript:void(0)" role="button" aria-expanded="false">Documentation</a>
+                                <ul class="navL2" style="display: none;">
+                                        <li class="inactive current">
+
+                                                <a href="https://msdn.microsoft.com/library" role="link" title="APIs and reference">APIs and reference</a>
+                                        </li>
+                                        <li class="inactive">
+
+                                                <a href="https://msdn.microsoft.com/developer-centers-msdn" role="link" title="Dev centers">Dev centers</a>
+                                        </li>
+                                        <li class="inactive">
+
+                                                <a href="https://code.msdn.microsoft.com/" role="link" title="Samples">Samples</a>
+                                        </li>
+                                        <li class="inactive">
+
+                                                <a href="https://msdn.microsoft.com/retiredcontent" role="link" title="Retired content">Retired content</a>
+                                        </li>
+                                </ul>
+                        </li>
+            </ul>
+        </nav>
+
+                  </div>
+                </div>
+              </div>
+              <div class="right" ms.title="search" role="search">
+                <div data-fragmentname="SearchBox" id="Fragment_SearchBox" xmlns="http://www.w3.org/1999/xhtml">
+  <div class="SearchBox">
+    <form id="HeaderSearchForm" name="HeaderSearchForm" method="get">
+      <button id="FakeHeaderSearchButton" value="Search" type="submit" class="header-search-button" role="button" aria-label="search finder" ms.interactiontype="2" ms.title="search" ms.pgarea="header" ms.searchtype="icon">
+        <div id="search-finder-div" class="clip16x20">
+          <img alt="search finder" id="search-finder" class="search-finder" src="./STRING_SPLIT (Transact-SQL)_files/HeaderFooterSprite.png">
+        </div>
+      </button>
+      <button id="HeaderSearchButton" style="display:none" data-searchtype="icon" data-pgarea="header" title="Search MSDN" ms.interactiontype="2" ms.title="search" ms.pgarea="header" ms.searchtype="icon"></button>
+      <div id="searchSplitter"></div>
+      <div id="searchCloseIconDiv" class="clip16x20" tabindex="0">
+        <img alt="search clear" id="searchCloseIcon" class="search-clear-x" src="./STRING_SPLIT (Transact-SQL)_files/HeaderFooterSprite.png">
+      </div>
+      <div id="searchTextContainer" style="width: 0px; display: none;">
+        <input id="HeaderSearchTextBox" name="query" type="text" aria-label="Search Input Box" maxlength="200" onfocus="Epx.Controls.SearchBox.watermarkFocus(event, this.title)" onblur="Epx.Controls.SearchBox.watermarkBlur(event, this.title)" autocomplete="off" data-searchtype="searchbox" role="combobox" aria-autocomplete="both" aria-owns="MSDNSearchAutoCompleteList" aria-live="polite" placeholder="" data-pgarea="header" ms.interactiontype="2" ms.title="search" ms.pgarea="header" ms.searchtype="enter-key">
+      <div id="SearchFlyoutContainer" style="display: none; text-align: left; border: 1px solid buttonshadow; position: absolute; z-index: 1000; padding: 2px; background-color: rgb(255, 255, 255); color: rgb(255, 255, 255); font-family: Arial; font-size: 16px;"><div id="SuggestionContainer"><ul data-pgarea="header" data-searchtype="search dropdown" id="MSDNSearchAutoCompleteList" role="listbox" aria-controls="HeaderSearchTextBox" ms.interactiontype="2" ms.title="search" ms.pgarea="header" ms.searchtype="suggested keyword" style="list-style: none; padding: 4px 2px 0px 1px; cursor: pointer; margin: 1px; white-space: nowrap;"></ul></div></div><p role="alert" style="height: 1px;overflow-y: hidden;"></p></div>
+    </form>
+    
+    
+  </div>
+</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </header>
+
+    <div id="overlayMaskHeader"></div></div>
+
+    
+    
+    
+    <div id="jumpInfo" style="display: none">We’re sorry. The content you requested has been removed. You’ll be auto redirected in 1 second.</div>
+
+
+
+
+
+<link type="text/css" rel="stylesheet">
+<link type="text/css" rel="stylesheet">
+
+
+    <div id="breadcrumbs" ms.pgarea="body" ms.cmpgrp="breadcrumbs">
+        <div id="breadcrumbDesktop" class="breadCrumb">
+                        <span class="breadcrumbEllipsis"><a href="https://msdn.microsoft.com/en-us/library/dn198336.aspx" title="Microsoft SQL Server Language Reference"></a></span>
+                        <span><a href="https://msdn.microsoft.com/en-us/library/bb510741.aspx" title="Transact-SQL Reference (Database Engine)"><span>Transact-SQL Reference (Database Engine)</span></a></span>
+                        <span><a href="https://msdn.microsoft.com/en-us/library/ms174318.aspx" title="Built-in Functions (Transact-SQL)"><span>Built-in Functions (Transact-SQL)</span></a></span>
+                        <span class="breadcrumbDropSmall">
+                            <a id="breadcrumbDropDownButton" href="https://msdn.microsoft.com/en-us/library/mt684588.aspx#" targethref="https://msdn.microsoft.com/en-us/library/ms174318.aspx" title="String Functions (Transact-SQL)" role="button" aria-expanded="false"><span>String Functions (Transact-SQL)</span></a>
+                        </span>
+        </div>
+        <div id="breadcrumbDropDownMenu" style="display: none;"></div>
+
+        <div id="breadcrumbTablet" class="breadCrumb">
+                        <span class="breadcrumbEllipsis"><a href="https://msdn.microsoft.com/en-us/library/ms174318.aspx" title="Built-in Functions (Transact-SQL)"></a></span>
+                    <span><a href="https://msdn.microsoft.com/en-us/library/ms181984.aspx" title="String Functions (Transact-SQL)"><span>String Functions (Transact-SQL)</span></a></span>
+                <span class="breadcrumbDropSmall"><a id="tocDropDownButton" href="https://msdn.microsoft.com/en-us/library/mt684588.aspx#" title="STRING_SPLIT (Transact-SQL)" role="button" aria-expanded="false"><span>STRING_SPLIT (Transact-SQL)</span></a></span>
+        <div id="navigationButtons">
+            <a id="isd_print" href="https://msdn.microsoft.com/en-us/library/mt684588(d=printer).aspx" rel="nofollow"><ins class="print"></ins>Print </a>
+            <a id="isd_printABook" href="https://msdn.microsoft.com/en-us/library/export/help/?returnurl=%2fen-us%2flibrary%2fmt684588.aspx">
+                <ins class="export"></ins>Export (<span class="count">0</span>)
+            </a>
+        </div></div>
+        <div id="tocDropDownMenu" style="display: none;"></div>
+        <div id="breadcrumbMobile" class="breadCrumb">
+                <span class="breadcrumbEllipsis"><a href="https://msdn.microsoft.com/en-us/library/ms181984.aspx" title="String Functions (Transact-SQL)"></a></span>
+            <span class="breadcrumbDropSmall"><a id="tocPopupButton" href="https://msdn.microsoft.com/en-us/library/mt684588.aspx#" title="STRING_SPLIT (Transact-SQL)" role="button" aria-expanded="false"><span>STRING_SPLIT (Transact-SQL)</span></a></span>
+        <div id="navigationButtons">
+            <a id="isd_print" href="https://msdn.microsoft.com/en-us/library/mt684588(d=printer).aspx" rel="nofollow"><ins class="print"></ins>Print </a>
+            <a id="isd_printABook" href="https://msdn.microsoft.com/en-us/library/export/help/?returnurl=%2fen-us%2flibrary%2fmt684588.aspx">
+                <ins class="export"></ins>Export (<span class="count">0</span>)
+            </a>
+        </div></div>
+    </div>
+    <div id="tocPopupMenu" style="display: none;">
+        <div id="tocPopMenuClose" class="tocCloseLarge" role="button" aria-label="Close Popup Menu" tabindex="0"></div>
+        <div id="tocTitle">STRING_SPLIT (Transact-SQL)</div>        
+    </div>
+
+    
+
+
+        <div id="body" ms.pgarea="body" class="">
+            <span id="tabletView_large"></span>
+            <span id="tabletView_small"></span>
+            <span id="mobileView"></span>
+            
+
+
+
+
+
+
+
+
+
+    <div id="leftNav" ms.cmpgrp="left toc" role="navigation" aria-label="left toc" style="height: auto;">
+
+    
+
+
+<div id="tocnav" class="ArchiveV2">
+    <div class="tocunselected">
+        <div id="tocExpandArea" style="display: block;">
+            <span class="toc_empty"></span>
+            <span id="tocExpandButton"><a href="javascript:void(0)" aria-label="expand sibling toc" role="button"></a></span>
+        </div>
+        <div id="tocExpand"><div class="toclevel " data-toclevel="1">
+<span class="toc_empty"></span><a href="https://msdn.microsoft.com/en-us/library/ms177545.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="ASCII (Transact-SQL)">ASCII (Transact-SQL)</a>                </div><div class="toclevel " data-toclevel="1">
+<span class="toc_empty"></span><a href="https://msdn.microsoft.com/en-us/library/ms187323.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="CHAR (Transact-SQL)">CHAR (Transact-SQL)</a>                </div><div class="toclevel " data-toclevel="1">
+<span class="toc_empty"></span><a href="https://msdn.microsoft.com/en-us/library/ms186323.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="CHARINDEX (Transact-SQL)">CHARINDEX (Transact-SQL)</a>                </div><div class="toclevel " data-toclevel="1">
+<span class="toc_empty"></span><a href="https://msdn.microsoft.com/en-us/library/hh231515.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="CONCAT (Transact-SQL)">CONCAT (Transact-SQL)</a>                </div><div class="toclevel " data-toclevel="1">
+<span class="toc_empty"></span><a href="https://msdn.microsoft.com/en-us/library/mt775030.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="CONCAT_WS (Transact-SQL)">CONCAT_WS (Transact-SQL)</a>                </div><div class="toclevel " data-toclevel="1">
+<span class="toc_empty"></span><a href="https://msdn.microsoft.com/en-us/library/ms188753.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="DIFFERENCE (Transact-SQL)">DIFFERENCE (Transact-SQL)</a>                </div><div class="toclevel " data-toclevel="1">
+<span class="toc_empty"></span><a href="https://msdn.microsoft.com/en-us/library/hh213505.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="FORMAT (Transact-SQL)">FORMAT (Transact-SQL)</a>                </div><div class="toclevel " data-toclevel="1">
+<span class="toc_empty"></span><a href="https://msdn.microsoft.com/en-us/library/ms177601.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="LEFT (Transact-SQL)">LEFT (Transact-SQL)</a>                </div><div class="toclevel " data-toclevel="1">
+<span class="toc_empty"></span><a href="https://msdn.microsoft.com/en-us/library/ms190329.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="LEN (Transact-SQL)">LEN (Transact-SQL)</a>                </div><div class="toclevel " data-toclevel="1">
+<span class="toc_empty"></span><a href="https://msdn.microsoft.com/en-us/library/ms174400.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="LOWER (Transact-SQL)">LOWER (Transact-SQL)</a>                </div><div class="toclevel " data-toclevel="1">
+<span class="toc_empty"></span><a href="https://msdn.microsoft.com/en-us/library/ms177827.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="LTRIM (Transact-SQL)">LTRIM (Transact-SQL)</a>                </div><div class="toclevel " data-toclevel="1">
+<span class="toc_empty"></span><a href="https://msdn.microsoft.com/en-us/library/ms182673.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="NCHAR (Transact-SQL)">NCHAR (Transact-SQL)</a>                </div><div class="toclevel " data-toclevel="1">
+<span class="toc_empty"></span><a href="https://msdn.microsoft.com/en-us/library/ms188395.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="PATINDEX (Transact-SQL)">PATINDEX (Transact-SQL)</a>                </div><div class="toclevel " data-toclevel="1">
+<span class="toc_empty"></span><a href="https://msdn.microsoft.com/en-us/library/ms176114.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="QUOTENAME (Transact-SQL)">QUOTENAME (Transact-SQL)</a>                </div><div class="toclevel " data-toclevel="1">
+<span class="toc_empty"></span><a href="https://msdn.microsoft.com/en-us/library/ms186862.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="REPLACE (Transact-SQL)">REPLACE (Transact-SQL)</a>                </div><div class="toclevel " data-toclevel="1">
+<span class="toc_empty"></span><a href="https://msdn.microsoft.com/en-us/library/ms174383.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="REPLICATE (Transact-SQL)">REPLICATE (Transact-SQL)</a>                </div><div class="toclevel " data-toclevel="1">
+<span class="toc_empty"></span><a href="https://msdn.microsoft.com/en-us/library/ms180040.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="REVERSE (Transact-SQL)">REVERSE (Transact-SQL)</a>                </div><div class="toclevel " data-toclevel="1">
+<span class="toc_empty"></span><a href="https://msdn.microsoft.com/en-us/library/ms177532.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="RIGHT (Transact-SQL)">RIGHT (Transact-SQL)</a>                </div><div class="toclevel " data-toclevel="1">
+<span class="toc_empty"></span><a href="https://msdn.microsoft.com/en-us/library/ms178660.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="RTRIM (Transact-SQL)">RTRIM (Transact-SQL)</a>                </div><div class="toclevel " data-toclevel="1">
+<span class="toc_empty"></span><a href="https://msdn.microsoft.com/en-us/library/ms187384.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="SOUNDEX (Transact-SQL)">SOUNDEX (Transact-SQL)</a>                </div><div class="toclevel " data-toclevel="1">
+<span class="toc_empty"></span><a href="https://msdn.microsoft.com/en-us/library/ms187950.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="SPACE (Transact-SQL)">SPACE (Transact-SQL)</a>                </div></div>
+    <div class="toclevel " data-toclevel="1">
+<span class="toc_empty"></span><a href="https://msdn.microsoft.com/en-us/library/ms189527.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="STR (Transact-SQL)">STR (Transact-SQL)</a>                </div><div class="toclevel " data-toclevel="1">
+<span class="toc_empty"></span><a href="https://msdn.microsoft.com/en-us/library/mt790580.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="STRING_AGG (Transact-SQL)">STRING_AGG (Transact-SQL)</a>                </div><div class="toclevel " data-toclevel="1">
+<span class="toc_empty"></span><a href="https://msdn.microsoft.com/en-us/library/mt684589.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="STRING_ESCAPE (Transact-SQL)">STRING_ESCAPE (Transact-SQL)</a>                </div></div>
+    <div class="tocselected"><div class="toclevel current" data-toclevel="1">
+<span class="toc_empty"></span><a href="https://msdn.microsoft.com/en-us/library/mt684588.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="STRING_SPLIT (Transact-SQL)">STRING_SPLIT (Transact-SQL)</a>                </div><div class="tocPadding"></div></div>
+    <div class="tocunselected">
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <div class="toclevel " data-toclevel="1">
+<span class="toc_empty"></span><a href="https://msdn.microsoft.com/en-us/library/ms188043.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="STUFF (Transact-SQL)">STUFF (Transact-SQL)</a>                </div>
+                <div class="toclevel " data-toclevel="1">
+<span class="toc_empty"></span><a href="https://msdn.microsoft.com/en-us/library/ms187748.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="SUBSTRING (Transact-SQL)">SUBSTRING (Transact-SQL)</a>                </div>
+                <div class="toclevel " data-toclevel="1">
+<span class="toc_empty"></span><a href="https://msdn.microsoft.com/en-us/library/mt775084.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="TRANSLATE (Transact-SQL)">TRANSLATE (Transact-SQL)</a>                </div>
+                <div class="toclevel " data-toclevel="1">
+<span class="toc_empty"></span><a href="https://msdn.microsoft.com/en-us/library/mt775029.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="TRIM (Transact-SQL)">TRIM (Transact-SQL)</a>                </div>
+                <div class="toclevel " data-toclevel="1">
+<span class="toc_empty"></span><a href="https://msdn.microsoft.com/en-us/library/ms180059.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="UNICODE (Transact-SQL)">UNICODE (Transact-SQL)</a>                </div>
+                <div class="toclevel " data-toclevel="1">
+<span class="toc_empty"></span><a href="https://msdn.microsoft.com/en-us/library/ms180055.aspx" mtpsaliasid="" mtpsassetid="" mtpsshortid="" title="UPPER (Transact-SQL)">UPPER (Transact-SQL)</a>                </div>
+    </div>
+    <a id="tocMenuToggler" href="javascript:void(0)" role="button">
+        <span id="tocMenuTogglerIcon" class="tocMenuCollapse" role="button" aria-expanded="true" aria-label="Table of contents menu"></span>
+        <div id="tocMenuTogglerLabel">TOC</div>
+    </a>
+</div>            <div style="display:none">
+                <div id="CollapseLocalizeString">Collapse the table of content</div>
+                <div id="ExpandLocalizeString">Expand the table of content</div>
+            </div>
+        <div>
+            <a id="isd_archiveControlResponsive" style="display:none;" href="javascript:void(0)" role="button" aria-label="Hide Archived Versions" data-include-archive="Show Archived Versions" data-exclude-archive="Hide Archived Versions">
+            </a>
+            <div id="isd_archiveInstrument" style="display:none">This documentation is archived and is not being maintained.</div>
+        </div>
+    </div>
+     <div id="content" class="content" ms.cmpgrp="content body" role="main">
+
+
+
+
+
+
+
+
+    <div id="archiveDisclaimerText" style="display:none">This documentation is archived and is not being maintained.</div>
+
+
+
+<div xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="topic">
+    <h1 class="title">STRING_SPLIT (Transact-SQL)</h1>
+    <div id="mainSection">
+      <div id="mainBody">&nbsp;<p>Updated: June 10, 2016</p><p><token><strong>THIS TOPIC APPLIES TO:</strong> <span><img id="a45b6379-ac63-48d7-ab97-33b3563b36ee" alt="yes" src="./STRING_SPLIT (Transact-SQL)_files/IC840447.jpeg" title="yes" xmlns=""></span>SQL Server (starting with 2016)<span><img id="a45b6379-ac63-48d7-ab97-33b3563b36ee" alt="yes" src="./STRING_SPLIT (Transact-SQL)_files/IC840447.jpeg" title="yes" xmlns=""></span>Azure SQL Database<span><img id="ed423705-b87b-4bee-8f6f-1b9705944575" alt="no" src="./STRING_SPLIT (Transact-SQL)_files/IC840446.jpeg" title="no" xmlns=""></span>Azure SQL Data Warehouse <span><img id="ed423705-b87b-4bee-8f6f-1b9705944575" alt="no" src="./STRING_SPLIT (Transact-SQL)_files/IC840446.jpeg" title="no" xmlns=""></span>Parallel Data Warehouse </token></p><p>Splits the character expression using specified separator.</p><div class="contentTableWrapper"><table summary="table"><tbody><tr><th scope="col"><span><img id="s-e6f6a65cf14f462597b64ac058dbe1d0-system-media-system-caps-icon-note" alt="System_CAPS_ICON_note.jpg" src="./STRING_SPLIT (Transact-SQL)_files/IC101471.jpeg" title="System_CAPS_ICON_note.jpg" xmlns=""></span>&nbsp;<token space="preserve">Note </token></th></tr><tr><td><p><br>
+The <strong>STRING_SPLIT</strong> function is available only under compatibility level 130. If your database compatibility level is lower than 130, SQL Server will not be able to find and execute <strong>STRING_SPLIT</strong> function. You can change a compatibility level of database using the following command:<br>
+ALTER DATABASE DatabaseName SET COMPATIBILITY_LEVEL = 130</p><p>Note that compatibility level 120 might be default even in new Azure SQL Databases.</p></td></tr></tbody></table></div><p><span><img id="05b1d166-d807-482c-891f-30b3b6b58046" alt="Topic link icon" src="./STRING_SPLIT (Transact-SQL)_files/IC128933.jpeg" title="Topic link icon" xmlns=""></span>&nbsp;<a href="https://msdn.microsoft.com/en-us/library/ms177563.aspx">Transact-SQL Syntax Conventions</a></p><div><h2 class="LW_CollapsibleArea_TitleDiv"><div><a class="LW_CollapsibleArea_TitleAhref" title="" role="heading"><span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span><span class="LW_CollapsibleArea_Title">Syntax</span></a><div id="Anchor_0" class="LW_CollapsibleArea_Anchor_Div"><a href="https://msdn.microsoft.com/en-us/library/mt684588.aspx#Anchor_0" class="LW_CollapsibleArea_Anchor_Img" title="Right-click to copy and share the link for this section"></a></div><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr"></div></div></h2><div class="sectionblock"><a id="Syntax"></a></div></div>
+<div id="code-snippet-1" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode(&#39;CodeSnippetContainerCode_43b303ed-3d89-46e9-ae1d-744a3c8d7f0e&#39;);" ms.cmptyp="CodeSnippet">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_43b303ed-3d89-46e9-ae1d-744a3c8d7f0e" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>STRING_SPLIT ( string , separator )  
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+<div><h2 class="LW_CollapsibleArea_TitleDiv"><div><a class="LW_CollapsibleArea_TitleAhref" title="" role="heading"><span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span><span class="LW_CollapsibleArea_Title">Arguments</span></a><div id="Anchor_1" class="LW_CollapsibleArea_Anchor_Div"><a href="https://msdn.microsoft.com/en-us/library/mt684588.aspx#Anchor_1" class="LW_CollapsibleArea_Anchor_Img" title="Right-click to copy and share the link for this section"></a></div><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr"></div></div></h2><div class="sectionblock"><a id="Arguments"></a></div></div><p><em>string</em><br>
+Is an <a href="https://msdn.microsoft.com/en-us/library/ms190286.aspx">expression</a> of any character type (i.e. <strong>nvarchar</strong>, <strong>varchar</strong>, <strong>nchar</strong> or <strong>char</strong>).</p><p><em>separator</em><br>
+Is a single character <a href="https://msdn.microsoft.com/en-us/library/ms190286.aspx">expression</a> of any character type (e.g. <strong>nvarchar(1)</strong>, <strong>varchar(1)</strong>, <strong>nchar(1)</strong> or <strong>char(1)</strong>) that is used as separator for concatenated strings.</p><div><h2 class="LW_CollapsibleArea_TitleDiv"><div><a class="LW_CollapsibleArea_TitleAhref" title="" role="heading"><span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span><span class="LW_CollapsibleArea_Title">Return Types</span></a><div id="Anchor_2" class="LW_CollapsibleArea_Anchor_Div"><a href="https://msdn.microsoft.com/en-us/library/mt684588.aspx#Anchor_2" class="LW_CollapsibleArea_Anchor_Img" title="Right-click to copy and share the link for this section"></a></div><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr"></div></div></h2><div class="sectionblock"><a id="Return-Types"></a></div></div><p>Returns a single-column table with fragments. The name of the column is <strong>value</strong>. Returns <strong>nvarchar</strong> if any of the input arguments are either <strong>nvarchar</strong> or <strong>nchar</strong>. Otherwise returns <strong>varchar</strong>. The length of the return type is the same as the length of the string argument.</p><div><h2 class="LW_CollapsibleArea_TitleDiv"><div><a class="LW_CollapsibleArea_TitleAhref" title="" role="heading"><span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span><span class="LW_CollapsibleArea_Title">Remarks</span></a><div id="Anchor_3" class="LW_CollapsibleArea_Anchor_Div"><a href="https://msdn.microsoft.com/en-us/library/mt684588.aspx#Anchor_3" class="LW_CollapsibleArea_Anchor_Img" title="Right-click to copy and share the link for this section"></a></div><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr"></div></div></h2><div class="sectionblock"><a id="Remarks"></a></div></div><p><strong>STRING_SPLIT</strong> takes a string that should be divided and the separator that will be used to divide string. It returns a single-column table with substrings. For example, the following  statement <code>SELECT value FROM STRING_SPLIT('Lorem ipsum dolor sit amet.', ' ');</code> using the space character as the separator, returns following result table:</p><div class="contentTableWrapper"><table summary="table"><thead><tr><th scope="col">value</th></tr></thead><tbody><tr><td>Lorem</td></tr><tr><td>ipsum</td></tr><tr><td>dolor</td></tr><tr><td>sit</td></tr><tr><td>amet.</td></tr></tbody></table></div><p>If the input string is <strong>NULL</strong>, the <strong>STRING_SPLIT</strong> table-valued function returns an empty table.</p><p><strong>STRING_SPLIT</strong> requires at least compatibility mode 130.</p><div><h2 class="LW_CollapsibleArea_TitleDiv"><div><a class="LW_CollapsibleArea_TitleAhref" title="" role="heading"><span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span><span class="LW_CollapsibleArea_Title">Examples</span></a><div id="Anchor_4" class="LW_CollapsibleArea_Anchor_Div"><a href="https://msdn.microsoft.com/en-us/library/mt684588.aspx#Anchor_4" class="LW_CollapsibleArea_Anchor_Img" title="Right-click to copy and share the link for this section"></a></div><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr"></div></div></h2><div class="sectionblock"><a id="Examples"></a></div></div><h3 class="subHeading"><a id="A-Split-comma-separated-value-string"></a>A. Split comma separated value string</h3><p>Parse a comma separated list of values and return all non-empty tokens:</p>
+<div id="code-snippet-2" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode(&#39;CodeSnippetContainerCode_85f96396-8292-461c-83d1-7180e51a9112&#39;);" ms.cmptyp="CodeSnippet">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_85f96396-8292-461c-83d1-7180e51a9112" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>  
+DECLARE @tags NVARCHAR(400) = 'clothing,road,,touring,bike'  
+  
+SELECT value  
+FROM STRING_SPLIT(@tags, ',')  
+WHERE RTRIM(value) &lt;&gt; '';  
+  
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+<p>STRING_SPLIT will return empty string if there is nothing between separator. Condition RTRIM(value) &lt;&gt; '' will remove empty tokens.</p><h3 class="subHeading"><a id="B-Split-comma-separated-value-string-in-a-column"></a>B. Split comma separated value string in a column</h3><p>Product table has a column with comma-separate list of tags shown in the following example:</p><div class="contentTableWrapper"><table responsive="true" summary="table"><thead><tr responsive="true"><th scope="col">ProductId</th><th scope="col">Name</th><th scope="col">Tags</th></tr></thead><tbody><tr><td data-th="ProductId">1</td><td data-th="Name">Full-Finger Gloves</td><td data-th="Tags">clothing,road,touring,bike</td></tr><tr><td data-th="ProductId">2</td><td data-th="Name">LL Headset</td><td data-th="Tags">bike</td></tr><tr><td data-th="ProductId">3</td><td data-th="Name">HL Mountain Frame</td><td data-th="Tags">bike,mountain</td></tr></tbody></table></div><p>Following query transforms each list of tags and joins them with the original row:</p>
+<div id="code-snippet-3" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode(&#39;CodeSnippetContainerCode_94ad5ec1-a6e1-4f0a-b505-48e5ed073f1e&#39;);" ms.cmptyp="CodeSnippet">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_94ad5ec1-a6e1-4f0a-b505-48e5ed073f1e" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>SELECT ProductId, Name, value  
+FROM Product  
+    CROSS APPLY STRING_SPLIT(Tags, ',');  
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+<p>Here is the result set.</p><div class="contentTableWrapper"><table responsive="true" summary="table"><thead><tr responsive="true"><th scope="col">ProductId</th><th scope="col">Name</th><th scope="col">value</th></tr></thead><tbody><tr><td data-th="ProductId">1</td><td data-th="Name">Full-Finger Gloves</td><td data-th="value">clothing</td></tr><tr><td data-th="ProductId">1</td><td data-th="Name">Full-Finger Gloves</td><td data-th="value">road</td></tr><tr><td data-th="ProductId">1</td><td data-th="Name">Full-Finger Gloves</td><td data-th="value">touring</td></tr><tr><td data-th="ProductId">1</td><td data-th="Name">Full-Finger Gloves</td><td data-th="value">bike</td></tr><tr><td data-th="ProductId">2</td><td data-th="Name">LL Headset</td><td data-th="value">bike</td></tr><tr><td data-th="ProductId">3</td><td data-th="Name">HL Mountain Frame</td><td data-th="value">bike</td></tr><tr><td data-th="ProductId">3</td><td data-th="Name">HL Mountain Frame</td><td data-th="value">mountain</td></tr></tbody></table></div><h3 class="subHeading"><a id="C-Aggregation-by-values"></a>C. Aggregation by values</h3><p>Users must create a report that shows the number of products per each tag, ordered by number of products, and to filter only the tags with more than 2 products.</p>
+<div id="code-snippet-4" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode(&#39;CodeSnippetContainerCode_3cde3377-40f0-4353-a1b0-537c8f00cf54&#39;);" ms.cmptyp="CodeSnippet">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_3cde3377-40f0-4353-a1b0-537c8f00cf54" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>SELECT value as tag, COUNT(*) AS [Number of articles]  
+FROM Product  
+    CROSS APPLY STRING_SPLIT(Tags, ',')  
+GROUP BY value  
+HAVING COUNT(*) &gt; 2  
+ORDER BY COUNT(*) DESC;  
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+<h3 class="subHeading"><a id="D-Search-by-tag-value"></a>D. Search by tag value</h3><p>Developers must create queries that find articles by keywords. They can use following queries:</p><p>To find products with a single tag (clothing):</p>
+<div id="code-snippet-5" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode(&#39;CodeSnippetContainerCode_efad1ba3-27aa-4b43-b058-4ce0e5d6e78a&#39;);" ms.cmptyp="CodeSnippet">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_efad1ba3-27aa-4b43-b058-4ce0e5d6e78a" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>SELECT ProductId, Name, Tags  
+FROM Product  
+WHERE 'clothing' IN (SELECT value FROM STRING_SPLIT(Tags, ','));  
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+<p>Find products with two specified tags (clothing and road):</p>
+<div id="code-snippet-6" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode(&#39;CodeSnippetContainerCode_22d1390d-34b3-4991-9118-680f2a275dd1&#39;);" ms.cmptyp="CodeSnippet">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_22d1390d-34b3-4991-9118-680f2a275dd1" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>  
+SELECT ProductId, Name, Tags  
+FROM Product  
+WHERE EXISTS (SELECT *  
+    FROM STRING_SPLIT(Tags, ',')  
+    WHERE value IN ('clothing', 'road');  
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+<h3 class="subHeading"><a id="E-Find-rows-by-list-of-values"></a>E. Find rows by list of values</h3><p>Developers must create a query that finds articles by a list of ids. They can use following query:</p>
+<div id="code-snippet-7" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode(&#39;CodeSnippetContainerCode_0ce88e51-18b5-46c7-97e7-c02eedcc53bf&#39;);" ms.cmptyp="CodeSnippet">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_0ce88e51-18b5-46c7-97e7-c02eedcc53bf" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>SELECT ProductId, Name, Tags  
+FROM Product  
+JOIN STRING_SPLIT('1,2,3',',')   
+    ON value = ProductId;  
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+<p>This is replacement for common anti-pattern such as creating a dynamic SQL string in application layer or Transact-SQL, or by using LIKE operator:</p>
+<div id="code-snippet-8" class="codeSnippetContainer" xmlns="">
+    <div class="codeSnippetContainerTabs">
+        
+    </div>
+    <div class="codeSnippetContainerCodeContainer">
+        <div class="codeSnippetToolBar">
+            <div class="codeSnippetToolBarText">
+                <a name="CodeSnippetCopyLink" style="display: none;" title="Copy to clipboard." href="javascript:if (window.epx.codeSnippet)window.epx.codeSnippet.copyCode(&#39;CodeSnippetContainerCode_0de4d253-0a4a-4c1b-848d-f5dd7f220c48&#39;);" ms.cmptyp="CodeSnippet">Copy</a>
+            </div>
+        </div>
+        <div id="CodeSnippetContainerCode_0de4d253-0a4a-4c1b-848d-f5dd7f220c48" class="codeSnippetContainerCode" dir="ltr">
+            <div style="color:Black;"><pre>SELECT ProductId, Name, Tags  
+FROM Product  
+WHERE ',1,2,3,' LIKE '%,' + CAST(ProductId AS VARCHAR(20)) + ',%';  
+
+</pre></div>
+            
+        </div>
+    </div>
+</div>
+<div><h2 class="LW_CollapsibleArea_TitleDiv"><div><a class="LW_CollapsibleArea_TitleAhref" title="" role="heading"><span class="cl_CollapsibleArea_expanding LW_CollapsibleArea_Img"></span><span class="LW_CollapsibleArea_Title">See Also</span></a><div id="Anchor_5" class="LW_CollapsibleArea_Anchor_Div"><a href="https://msdn.microsoft.com/en-us/library/mt684588.aspx#Anchor_5" class="LW_CollapsibleArea_Anchor_Img" title="Right-click to copy and share the link for this section"></a></div><div class="LW_CollapsibleArea_HrDiv"><hr class="LW_CollapsibleArea_Hr"></div></div></h2><div class="sectionblock"><a id="See-Also"></a></div></div><p><a href="https://msdn.microsoft.com/en-us/library/ms181984.aspx">String Functions (Transact-SQL)</a><br><a href="https://msdn.microsoft.com/en-us/library/ms187748.aspx">SUBSTRING (Transact-SQL)</a></p></div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+<div class="libraryMemberFilter">
+    <div class="filterContainer">
+        <span>Show:</span>
+        <label>
+            <input type="checkbox" class="libraryFilterInherited" checked="checked" value="Inherit">Inherited
+        </label>
+        <label>
+            <input type="checkbox" class="libraryFilterProtected" checked="checked" value="Protected">Protected
+        </label>
+    </div>
+</div>
+    
+<input type="hidden" id="libraryMemberFilterEmptyWarning" value="There are no members available with your current filter settings.">
+
+
+
+    </div>
+<div id="rightNavigationMenu" ms.cmpgrp="right nav">
+    <div id="mobileButtons">
+        
+    </div>
+    <div id="navMain">
+        <div id="closeNavigation">
+            <a class="tocCloseSmall" id="closeButton"></a>
+        </div>
+        <div id="navigationButtons">
+            <a id="isd_print" href="https://msdn.microsoft.com/en-us/library/mt684588(d=printer).aspx" rel="nofollow"><ins class="print"></ins>Print </a>
+            <a id="isd_printABook2" href="https://msdn.microsoft.com/en-us/library/export/help/?returnurl=%2fen-us%2flibrary%2fmt684588.aspx">
+                <ins class="export"></ins>Export (<span class="count">0</span>)
+            </a>
+            <a id="isdShare" href="https://msdn.microsoft.com/en-us/library/mt684588.aspx#" role="button" aria-expanded="false">
+                <ins class="share"></ins>Share
+            </a>
+            <div id="socials" style="display: none">
+                <a class="isdFacebook" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmsdn.microsoft.com%2Fen-us%2Flibrary%2Fmt684588.aspx" aria-label="Share on Facebook">
+                    <ins class="facebook"></ins>
+                </a>
+                <a class="isdTwitter" href="https://twitter.com/intent/tweet?original_referer=https%3A%2F%2Fmsdn.microsoft.com%2Fen-us%2Flibrary%2Fmt684588.aspx&amp;text=STRING_SPLIT%20(Transact-SQL)&amp;tw_p=tweetbutton&amp;url=https%3A%2F%2Fmsdn.microsoft.com%2Fen-us%2Flibrary%2Fmt684588.aspx" aria-label="Share on Twitter">
+                    <ins class="twitter"></ins>
+                </a>
+                <a class="isdGooglePlus" href="https://plus.google.com/share?url=https%3A%2F%2Fmsdn.microsoft.com%2Fen-us%2Flibrary%2Fmt684588.aspx" aria-label="Share on Google+">
+                    <ins class="googlePlus"></ins>
+                </a>
+            </div>
+        </div>
+        <div id="indoc_toc" style="" ms.cmpgrp="indoc toc">
+            <div id="indoc_title">IN THIS ARTICLE</div>
+            <ul id="indoc_toclist"><li data-index="0" class="active"><a href="https://msdn.microsoft.com/en-us/library/mt684588.aspx#Syntax">Syntax</a></li><li data-index="1"><a href="https://msdn.microsoft.com/en-us/library/mt684588.aspx#Arguments">Arguments</a></li><li data-index="2"><a href="https://msdn.microsoft.com/en-us/library/mt684588.aspx#Return Types">Return Types</a></li><li data-index="3"><a href="https://msdn.microsoft.com/en-us/library/mt684588.aspx#Remarks">Remarks</a></li><li data-index="4"><a href="https://msdn.microsoft.com/en-us/library/mt684588.aspx#Examples">Examples</a></li><li data-index="5"><a href="https://msdn.microsoft.com/en-us/library/mt684588.aspx#See Also">See Also</a></li></ul>
+        </div>
+    </div>
+</div>
+<div id="rightNavigationMenuThumbnail" class="rightNavigationMenuThumbnail">
+</div>
+
+
+
+
+
+        </div>
+        <div class="clear"></div>
+
+        
+
+<input name="__RequestVerificationToken" type="hidden" value="n47p88f-dBxkVDIFEOZ77rchffZhJMbC4VHAdfgCJ7OjwwGxYvDcqmpkGp0asImQYsyJeL3zdDyRIe8CBY4HkDMJznw1">
+<input id="ratingValueSubmitUrl" type="hidden" value="https://msdn.microsoft.com/en-us/library/feedback/rate/mt684588.aspx">
+<input id="ratingAdditionalSubmitUrl" type="hidden" value="https://msdn.microsoft.com/en-us/library/feedback/additional/mt684588.aspx">
+<input id="isTopicRated" type="hidden" value="false">
+
+
+
+
+    <div id="lib-footer">
+        
+
+    
+    <link type="text/css" rel="stylesheet">
+    
+        
+    <div id="ux-footer" class="" style="" dir="ltr" ms.pgarea="footer">
+
+
+    <div id="standardRatingBefore" class="clear stdr-container-before"></div>
+    <div id="standardRating" class="stdr-container" ms.pgarea="body" style="width: 1903px; margin-left: 0px; display: block;">
+        <div class="stdr-close" style="display: none;"></div>
+        <div class="stdr-vote stdr-content">
+            <div class="stdr-content">
+                <span class="stdr-votetitle">Is this page helpful?</span>
+                <button class="stdr-yes" aria-label="Yes, this page was helpful">Yes</button>
+                <button class="stdr-no" aria-label="No, this page was not helpful">No</button>
+                <input id="s_ratingValue" type="hidden" value="">
+            </div>
+        </div>
+        <div class="stdr-feedback" style="display: none">
+            <div class="stdr-form">
+                <div class="stdr-fieldtitle">Additional feedback?</div>
+                <textarea class="stdr-detail" rows="6" maxlength="1500"></textarea>
+                <div>
+                    <span class="stdr-count"><span class="stdr-charcnt">1500</span> characters remaining</span>
+                    <div class="stdr-buttons">
+                        <button class="stdr-provide" aria-label="Submit my additional feedback">Submit</button>
+                        <button class="stdr-skip" aria-label="Skip additional feedback">Skip this</button>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="stdr-thanks" style="display: none">
+            <div class="stdr-content">
+                <span class="stdr-thankyou">Thank you!</span>
+                <span class="stdr-appreciate">We appreciate your feedback.</span>
+            </div>
+        </div>
+
+        
+        <div id="contentFeedbackQAContainer" style="display: none;"></div>
+    </div>
+    <div id="standardRatingPlaceholder" style="display: none"></div>
+    
+
+        <footer class="top" role="navigation" aria-label="footer">
+            <div data-fragmentname="LeftLinks" id="Fragment_LeftLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="linkList">
+    <h4 class="linkListTitle">Dev centers</h4>
+    <ul class="links">
+      <li>
+        <a href="https://developer.microsoft.com/en-us/windows" id="LeftLinks_2148_1" class="windowsBlue" xmlns="http://www.w3.org/1999/xhtml">Windows</a>
+      </li>
+      <li>
+        <a href="https://dev.office.com/" id="LeftLinks_2148_3" class="office" xmlns="http://www.w3.org/1999/xhtml">Office</a>
+      </li>
+      <li>
+        <a href="https://www.visualstudio.com/" id="LeftLinks_2148_4" class="visualStudio" xmlns="http://www.w3.org/1999/xhtml">Visual Studio</a>
+      </li>
+      <li>
+        <a href="https://docs.microsoft.com/en-us/azure/" target="_blank" id="LeftLinks_2148_12" xmlns="http://www.w3.org/1999/xhtml">Microsoft Azure</a>
+      </li>
+      <li>
+        <a href="https://msdn.microsoft.com/developer-centers-msdn" id="LeftLinks_2148_5" xmlns="http://www.w3.org/1999/xhtml">More...</a>
+      </li>
+    </ul>
+  </div>
+</div>
+            <div id="rightLinks">
+                <div data-fragmentname="CenterLinks1" id="Fragment_CenterLinks1" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="linkList">
+    <h4 class="linkListTitle">Learning resources</h4>
+    <ul class="links">
+      <li>
+        <a href="https://mva.microsoft.com/" id="CenterLinks1_2151_4" xmlns="http://www.w3.org/1999/xhtml">Microsoft Virtual Academy</a>
+      </li>
+      <li>
+        <a href="https://channel9.msdn.com/" id="CenterLinks1_2151_5" xmlns="http://www.w3.org/1999/xhtml">Channel 9</a>
+      </li>
+      <li>
+        <a href="https://msdn.microsoft.com/magazine/" id="CenterLinks1_2151_7" xmlns="http://www.w3.org/1999/xhtml">MSDN Magazine</a>
+      </li>
+    </ul>
+  </div>
+</div>
+                <div data-fragmentname="CenterLinks2" id="Fragment_CenterLinks2" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="linkList">
+    <h4 class="linkListTitle">Community</h4>
+    <ul class="links">
+      <li>
+        <a href="https://social.msdn.microsoft.com/forums/en-us/home" id="CenterLinks2_2151_8" xmlns="http://www.w3.org/1999/xhtml">Forums</a>
+      </li>
+      <li>
+        <a href="https://blogs.msdn.microsoft.com/developer-tools/" id="CenterLinks2_2151_9" xmlns="http://www.w3.org/1999/xhtml">Blogs</a>
+      </li>
+      <li>
+        <a href="http://www.codeplex.com/" id="CenterLinks2_2151_10" xmlns="http://www.w3.org/1999/xhtml">Codeplex</a>
+      </li>
+    </ul>
+  </div>
+</div>
+                <div data-fragmentname="CenterLinks3" id="Fragment_CenterLinks3" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="linkList">
+    <h4 class="linkListTitle">Support</h4>
+    <ul class="links">
+      <li>
+        <a href="https://msdn.microsoft.com/hh361695" id="CenterLinks3_2151_11" xmlns="http://www.w3.org/1999/xhtml">Self support</a>
+      </li>
+    </ul>
+  </div>
+</div>
+                <div data-fragmentname="CenterLinks4" id="Fragment_CenterLinks4" xmlns="http://www.w3.org/1999/xhtml" class="nth-child-4n">
+  
+  <div class="linkList">
+    <h4 class="linkListTitle">Programs</h4>
+    <ul class="links">
+      <li>
+        <a href="https://bizspark.microsoft.com/Startups/Index" id="CenterLinks4_2151_13" xmlns="http://www.w3.org/1999/xhtml">BizSpark (for startups)</a>
+      </li>
+      <li>
+        <a href="https://imagine.microsoft.com/en-us" id="CenterLinks4_2151_22" xmlns="http://www.w3.org/1999/xhtml">Microsoft Imagine (for students)</a>
+      </li>
+    </ul>
+  </div>
+</div>
+            </div>
+        </footer>
+
+        <footer class="bottom" role="contentinfo">
+            <span class="localeContainer">
+                
+    <form class="selectLocale" id="selectLocaleForm" action="https://msdn.microsoft.com/en-us/selectlocale-dmc">
+        <input type="hidden" name="fromPage" value="https%3a%2f%2fmsdn.microsoft.com%2fen-us%2flibrary%2fmt684588.aspx">
+        <a href="https://msdn.microsoft.com/en-us/library/mt684588.aspx#" onclick="$(&#39;#selectLocaleForm&#39;).submit();return false;" title="Change your language">United States (English)</a>
+    </form>
+
+
+            </span>
+
+            <div data-fragmentname="BottomLinks" id="Fragment_BottomLinks" xmlns="http://www.w3.org/1999/xhtml">
+  
+  <div class="linkList">
+    <ul class="links horizontal">
+      <li>
+        <a href="https://msdn.microsoft.com/en-us/flashnewsletter" id="BottomLinks_2148_7" xmlns="http://www.w3.org/1999/xhtml">Newsletter</a>
+      </li>
+      <li>
+        <a href="https://msdn.microsoft.com/en-us/dn529288" id="BottomLinks_2148_8" xmlns="http://www.w3.org/1999/xhtml">Privacy &amp; cookies</a>
+      </li>
+      <li>
+        <a href="https://msdn.microsoft.com/en-us/cc300389" id="BottomLinks_2148_9" xmlns="http://www.w3.org/1999/xhtml">Terms of use</a>
+      </li>
+      <li>
+        <a href="https://www.microsoft.com/en-us/legal/intellectualproperty/Trademarks/" id="BottomLinks_2148_10" xmlns="http://www.w3.org/1999/xhtml">Trademarks</a>
+      </li>
+    </ul>
+  </div>
+</div>
+            <span class="logoLegal">
+                <span class="logoSpan clip67x13" role="img" tabindex="0" aria-label="microsoft logo">
+                    <img alt="logo" class="logo" src="./STRING_SPLIT (Transact-SQL)_files/HeaderFooterSprite.png">
+                </span>
+                <span class="copyright">© 2017 Microsoft</span>
+            </span>
+        </footer>
+    </div>
+    
+
+    </div>
+
+
+        <div class="footerPrintView">
+            <div class="footerCopyrightPrintView">© 2017 Microsoft</div>
+        </div>
+
+        
+        
+
+        
+        
+        
+
+    <input id="tocPaddingPerLevel" type="hidden" value="17">
+
+
+
+        <input id="MtpsDevice" type="hidden" value="Default">
+
+
+<!--[CDATA[ Third party scripts and code linked to or referenced from this website are licensed to you by the parties that own such code, not by Microsoft.  See ASP.NET Ajax CDN Terms of Use – http://www.asp.net/ajaxlibrary/CDN.ashx. ]]-->
+
+        
+        
+        
+            
+        
+
+<!--[CDATA[ WebTrends view model not available or IncludeLegacyWebTrendsScriptInGlobal feature flag is off]]-->
+
+
+
+
+<div id="globalRequestVerification">
+    <input name="__RequestVerificationToken" type="hidden" value="SksM4-1OQBPkKrkQRGv6eIPiuuBqbOh76Gc71oCSzXR0xBnu3Yg6xsbzFVUzeFREgCmp_T2Y_pobteZJTX07AcrNlfg1">
+</div>
+
+
+    </div>
+
+    
+    
+
+    
+
+    
+<script type="text/javascript" class="mtps-injected">
+/*<![CDATA[*/
+(function(window,document){"use strict";function preload(scripts){for(var result=[],script,e,i=0;i<scripts.length;i++)script=scripts[i],script.hasOwnProperty("url")&&(e=document.createElement("script"),e.src=script.url,script.throwaway=e),result.push(script);return result}function inject(scripts,index){var script,elem;if(index>=scripts.length){delete mtps.injectScripts;return}script=scripts[index];elem=document.createElement("script");elem.className="mtps-injected";elem.async=!1;var isLoaded=!1,timeoutId=0,injectNextFnName="",injectNext=elem.onerror=function(){isLoaded||(isLoaded=!0,inject(scripts,index+1),window.clearTimeout(timeoutId),elem.onload=elem.onerror=elem.onreadystatechange=null,injectNextFnName&&delete mtps[injectNextFnName],elem.removeEventListener&&elem.removeEventListener("load",injectNext,!1))};elem.addEventListener?elem.addEventListener("load",injectNext,!1):elem.readyState==="uninitialized"?elem.onreadystatechange=function(){(this.readyState==="loaded"||this.readyState==="complete")&&injectNext()}:elem.onload=injectNext;script.hasOwnProperty("url")?(timeoutId=window.setTimeout(injectNext,12e4),elem.src=script.url):(injectNextFnName="_injectNextScript_"+index,mtps[injectNextFnName]=injectNext,timeoutId=window.setTimeout(injectNext,2e3),elem.text="try {\n"+script.txt+"\n} finally { MTPS."+injectNextFnName+" && MTPS."+injectNextFnName+"(); }");parent.appendChild(elem)}var mtps=window.MTPS||(window.MTPS={}),parent=document.getElementsByTagName("head")[0];mtps.injectScripts=function(scripts){inject(preload(scripts),0)}})(window,document);
+MTPS.injectScripts([
+	{ txt: "/**/\r\n(window.MTPS || (window.MTPS = {})).cdnDomains || (window.MTPS.cdnDomains = { \r\n\t\"image\": \"https://i-msdn.sec.s-msft.com\", \r\n\t\"js\": \"https://i2-msdn.sec.s-msft.com\", \r\n\t\"css\": \"https://i-msdn.sec.s-msft.com\", \r\n\t\"ttf\": \"https://i-msdn.sec.s-msft.com\"\r\n});\r\n/**/" },
+	{ txt: "//\n\n        window.appInsightsId = \u00275eb1b2eb-c47a-497a-a7ac-a1c230b2882f\u0027;\n        //" },
+	{ url: "https://i2-msdn.sec.s-msft.com/Combined.js?resources=0:Utilities,1:Layout,2:Header,3:Breadcrumbs,4:LibraryRightNavigationMenu,4:PrintExportButton,5:StandardRating,2:Footer,0:Topic,3:ResponsiveSupport,0:AppInsightsPerf,3:ResponsiveToc,0:ABTestControl,4:WEDCS,3:CmpgrpForHeader,1:SearchBox;/Areas/Epx/Content/Scripts:0,/Areas/Epx/Themes/Base/Content:1,/Areas/Centers/Themes/StandardDevCenter/Content:2,/Areas/Library/Content:3,/Areas/Library/Themes/Base/Content:4,/Areas/Global/Content:5\u0026amp;hashKey=38EF7CAC66D30D78B9EFCE2040FED8BD\u0026amp;v=3046ADC64C65D5763F688F88914749AC" },
+	{ url: "https://i1.services.social.microsoft.com/search/Widgets/SearchBox.jss?boxid=HeaderSearchTextBox\u0026btnid=HeaderSearchButton\u0026minimumTermLength=2\u0026pgArea=header\u0026brand=Msdn\u0026loc=en-us\u0026focusOnInit=false\u0026emptyWatermark=true\u0026searchButtonTooltip=Search MSDN" },
+	{ url: "https://i2-msdn.sec.s-msft.com/Areas/Epx/Themes/Base/Content/JumpRedirect.js" },
+	{ txt: "MTPS = window.MTPS || {}; MTPS.LocalizedStrings = window.MTPS.LocalizedStrings || {}; MTPS.LocalizedStrings.ExpandButtonTooltip = \u0027Expand\u0027; MTPS.LocalizedStrings.CollapseButtonTooltip = \u0027Collapse\u0027; MTPS.LocalizedStrings.EnhancedExpandTooltip = \u0027Click to expand. Double-click to expand all.\u0027; MTPS.LocalizedStrings.EnhancedCollapseTooltip = \u0027Click to collapse. Double-click to collapse all.\u0027; MTPS.LocalizedStrings.ExpandAllButtonTooltip = \u0027Expand All\u0027; MTPS.LocalizedStrings.CollapseAllButtonTooltip = \u0027Collapse All\u0027;" },
+	{ url: "https://i2-msdn.sec.s-msft.com/Combined.js?resources=0:LibraryMemberFilter,1:Toc_Fixed,1:CodeSnippet,1:TopicNotInScope,1:VersionSelector,1:SurveyBroker;/Areas/Library/Content:0,/Areas/Epx/Content/Scripts:1\u0026amp;hashKey=D8D1FFAA6CA68460B7EFA5923975CA44\u0026amp;v=3046ADC64C65D5763F688F88914749AC" },
+	{ txt: "$(document).ready(function() {\n        try {\n            var token = $(\"#globalRequestVerification input[name=\u0027__RequestVerificationToken\u0027]\").clone();\n            $(\"#siteFeedbackForm\").append(token);\n        } catch(err) {\n            \n        }\n    });" }
+]);
+
+/*]]>*/
+</script>
+
+<div id="overlayMask"></div><script src="./STRING_SPLIT (Transact-SQL)_files/broker-config.js.Download"></script></body></html>
